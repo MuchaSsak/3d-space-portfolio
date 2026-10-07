@@ -24,9 +24,12 @@ msgstr "(main portfolio, opens in a new tab)"
 #: src/canvases/space/sections/certificatesSection/components/CertificatesItemCard.tsx:41
 #: src/canvases/space/sections/jobExperienceSection/components/JobExperienceDownloadResume.tsx:78
 #: src/canvases/space/sections/projectsSection/components/ProjectsItemCard.tsx:140
-#: src/components/contact/ContactFormContent.tsx:367
-#: src/components/contact/ContactFormContent.tsx:379
+#: src/components/contact/ContactFormContent.tsx:333
+#: src/components/contact/ContactFormContent.tsx:370
+#: src/components/contact/ContactFormContent.tsx:382
 #: src/components/JobExperienceItemDialog.tsx:120
+#: src/components/StartupScreen.tsx:290
+#: src/pages/privacyPolicy/components/PolicyDocument.tsx:186
 msgid "(opens in a new tab)"
 msgstr "(opens in a new tab)"
 
@@ -39,49 +42,45 @@ msgstr "(PDF)"
 msgid "{title} walkthrough"
 msgstr "{title} walkthrough"
 
-#: src/lib/constants.tsx:122
+#: src/lib/constants.tsx:124
 msgid "118 automated tests (49 Vitest, 69 Playwright)"
 msgstr "118 automated tests (49 Vitest, 69 Playwright)"
 
-#: src/lib/constants.tsx:112
+#: src/lib/constants.tsx:114
 msgid "2026 · 6 weeks"
 msgstr "2026 · 6 weeks"
 
-#: src/lib/constants.tsx:444
+#: src/lib/constants.tsx:446
 msgid "A 3D landing page for Youth Work Synergy, an organisation in Luxembourg."
 msgstr "A 3D landing page for Youth Work Synergy, an organisation in Luxembourg."
 
-#: src/lib/constants.tsx:396
+#: src/lib/constants.tsx:398
 msgid "A Balatro-style card game where every card is a real Polish matura maths task. Built with AI."
 msgstr "A Balatro-style card game where every card is a real Polish matura maths task. Built with AI."
 
-#: src/lib/constants.tsx:470
+#: src/lib/constants.tsx:472
 msgid "A GPGPU particle screensaver for a sports club, in React Three Fiber."
 msgstr "A GPGPU particle screensaver for a sports club, in React Three Fiber."
 
-#: src/components/contact/ContactFormContent.tsx:60
+#: src/components/contact/ContactFormContent.tsx:55
 msgid "A job"
 msgstr "A job"
 
-#: src/lib/constants.tsx:147
+#: src/lib/constants.tsx:149
 msgid "A one-month internship as a programmer that grew my soft and social skills."
 msgstr "A one-month internship as a programmer that grew my soft and social skills."
 
-#: src/components/contact/ContactFormContent.tsx:61
+#: src/components/contact/ContactFormContent.tsx:56
 msgid "A project"
 msgstr "A project"
 
-#: src/components/contact/ContactFormContent.tsx:62
+#: src/components/contact/ContactFormContent.tsx:57
 msgid "A question"
 msgstr "A question"
 
-#: src/lib/constants.tsx:374
+#: src/lib/constants.tsx:376
 msgid "A role-based time tracker built only with AI agents in about 9 days: 118 automated tests and row-level security on every table."
 msgstr "A role-based time tracker built only with AI agents in about 9 days: 118 automated tests and row-level security on every table."
-
-#: src/components/contact/ContactFormContent.tsx:164
-msgid "A role, a project or a question? One message is enough, I usually reply within a day."
-msgstr "A role, a project or a question? One message is enough, I usually reply within a day."
 
 #: src/lib/sections.ts:55
 msgid "About"
@@ -95,15 +94,15 @@ msgstr "About {company}"
 msgid "About me "
 msgstr "About me "
 
-#: src/lib/constants.tsx:274
+#: src/lib/constants.tsx:276
 msgid "Alternative Participation of Rural Youth in Bakuriani, Georgia"
 msgstr "Alternative Participation of Rural Youth in Bakuriani, Georgia"
 
-#: src/lib/constants.tsx:117
+#: src/lib/constants.tsx:119
 msgid "An internship brief: build Clockful, a role-based time tracker, only with AI agents and against a deadline."
 msgstr "An internship brief: build Clockful, a role-based time tracker, only with AI agents and against a deadline."
 
-#: src/lib/constants.tsx:418
+#: src/lib/constants.tsx:420
 msgid "An npx CLI that translates Lingui catalogs with an LLM. It grew out of Linkoglot."
 msgstr "An npx CLI that translates Lingui catalogs with an LLM. It grew out of Linkoglot."
 
@@ -111,7 +110,7 @@ msgstr "An npx CLI that translates Lingui catalogs with an LLM. It grew out of L
 msgid "are licensed under"
 msgstr "are licensed under"
 
-#: src/lib/constants.tsx:385
+#: src/lib/constants.tsx:387
 msgid "Ask for a walkthrough"
 msgstr "Ask for a walkthrough"
 
@@ -121,7 +120,11 @@ msgstr "Ask for a walkthrough"
 msgid "Audio settings"
 msgstr "Audio settings"
 
-#: src/lib/constants.tsx:325
+#: src/pages/privacyPolicy/PrivacyPolicyPage.tsx:46
+msgid "Back to the 3D portfolio"
+msgstr "Back to the 3D portfolio"
+
+#: src/lib/constants.tsx:327
 msgid "Bespoke websites for local businesses, ordered through one online form. I built it for Cetuspro, a Polish software house."
 msgstr "Bespoke websites for local businesses, ordered through one online form. I built it for Cetuspro, a Polish software house."
 
@@ -129,15 +132,15 @@ msgstr "Bespoke websites for local businesses, ordered through one online form. 
 msgid "Beyond code, I enjoy calisthenics, travelling, motorcycles, films and gaming with friends! "
 msgstr "Beyond code, I enjoy calisthenics, travelling, motorcycles, films and gaming with friends! "
 
-#: src/lib/constants.tsx:120
+#: src/lib/constants.tsx:122
 msgid "built Clockful from a 15-requirement spec in about 9 days"
 msgstr "built Clockful from a 15-requirement spec in about 9 days"
 
-#: src/lib/constants.tsx:93
+#: src/lib/constants.tsx:95
 msgid "built PstrykWeb: bespoke websites for local businesses, ordered through one online form"
 msgstr "built PstrykWeb: bespoke websites for local businesses, ordered through one online form"
 
-#: src/lib/constants.tsx:94
+#: src/lib/constants.tsx:96
 msgid "built the public configurator, the online order form"
 msgstr "built the public configurator, the online order form"
 
@@ -176,12 +179,12 @@ msgstr "Cheers to them!"
 msgid "Click an asteroid for more details"
 msgstr "Click an asteroid for more details"
 
-#: src/lib/constants.tsx:442
-#: src/lib/constants.tsx:468
+#: src/lib/constants.tsx:444
+#: src/lib/constants.tsx:470
 msgid "Client work · 2025"
 msgstr "Client work · 2025"
 
-#: src/lib/constants.tsx:323
+#: src/lib/constants.tsx:325
 msgid "Client work · Cetuspro · 2026"
 msgstr "Client work · Cetuspro · 2026"
 
@@ -189,23 +192,23 @@ msgstr "Client work · Cetuspro · 2026"
 msgid "Close"
 msgstr "Close"
 
-#: src/lib/constants.tsx:467
+#: src/lib/constants.tsx:469
 msgid "Club screensaver"
 msgstr "Club screensaver"
 
-#: src/lib/constants.tsx:389
+#: src/lib/constants.tsx:391
 msgid "Code private · no public deployment"
 msgstr "Code private · no public deployment"
 
-#: src/lib/constants.tsx:212
+#: src/lib/constants.tsx:214
 msgid "Complete Blender Megacourse: Beginner to Expert"
 msgstr "Complete Blender Megacourse: Beginner to Expert"
 
-#: src/lib/constants.tsx:283
+#: src/lib/constants.tsx:285
 msgid "CompTIA A+ Core 1 (220-1101) Complete Course & Practice Exam"
 msgstr "CompTIA A+ Core 1 (220-1101) Complete Course & Practice Exam"
 
-#: src/components/contact/ContactFormContent.tsx:161
+#: src/components/contact/ContactFormContent.tsx:155
 #: src/lib/sections.ts:90
 msgid "Contact"
 msgstr "Contact"
@@ -218,7 +221,7 @@ msgstr "Continue to the 3D version"
 msgid "Couldn't find results"
 msgstr "Couldn't find results"
 
-#: src/lib/constants.tsx:153
+#: src/lib/constants.tsx:155
 msgid "creating spreadsheets"
 msgstr "creating spreadsheets"
 
@@ -235,10 +238,6 @@ msgstr "Credits 💖"
 msgid "CV"
 msgstr "CV"
 
-#: src/components/contact/ContactFormContent.tsx:390
-msgid "CV (PDF)"
-msgstr "CV (PDF)"
-
 #: src/components/AnimateDocumentTitle.tsx:38
 #: src/components/StartupScreen.tsx:219
 msgid "Deploying..."
@@ -252,24 +251,24 @@ msgstr "Deploying...."
 msgid "Deploying....."
 msgstr "Deploying....."
 
-#: src/lib/constants.tsx:87
-#: src/lib/constants.tsx:114
+#: src/lib/constants.tsx:89
+#: src/lib/constants.tsx:116
 msgid "Developer (intern)"
 msgstr "Developer (intern)"
 
-#: src/lib/constants.tsx:150
+#: src/lib/constants.tsx:152
 msgid "developing a website"
 msgstr "developing a website"
 
-#: src/lib/constants.tsx:257
+#: src/lib/constants.tsx:259
 msgid "Developing Infrastructure to Work with Youth in Daugirdiškės, Lithuania"
 msgstr "Developing Infrastructure to Work with Youth in Daugirdiškės, Lithuania"
 
-#: src/lib/constants.tsx:265
+#: src/lib/constants.tsx:267
 msgid "Digital Youth Work Methods in Saraiķi, Latvia"
 msgstr "Digital Youth Work Methods in Saraiķi, Latvia"
 
-#: src/lib/constants.tsx:121
+#: src/lib/constants.tsx:123
 msgid "directed the AI agents and verified everything they built, from the database rules to the tests"
 msgstr "directed the AI agents and verified everything they built, from the database rules to the tests"
 
@@ -285,7 +284,7 @@ msgstr "Download CV"
 msgid "Earth"
 msgstr "Earth"
 
-#: src/components/contact/ContactFormContent.tsx:149
+#: src/components/contact/ContactFormContent.tsx:144
 msgid "Email copied"
 msgstr "Email copied"
 
@@ -293,7 +292,7 @@ msgstr "Email copied"
 msgid "Enable sounds"
 msgstr "Enable sounds"
 
-#: src/lib/constants.tsx:239
+#: src/lib/constants.tsx:241
 msgid "European Solidarity Corps volunteering: sea turtle conservation in Demre, Türkiye"
 msgstr "European Solidarity Corps volunteering: sea turtle conservation in Demre, Türkiye"
 
@@ -308,7 +307,7 @@ msgstr "Experience"
 msgid "from"
 msgstr "from"
 
-#: src/lib/constants.tsx:159
+#: src/lib/constants.tsx:161
 msgid "front-end development"
 msgstr "front-end development"
 
@@ -339,11 +338,11 @@ msgstr "Graphics: {0}"
 msgid "Heads up!"
 msgstr "Heads up!"
 
-#: src/lib/constants.tsx:152
+#: src/lib/constants.tsx:154
 msgid "helping other employees with various problems"
 msgstr "helping other employees with various problems"
 
-#: src/components/contact/ContactFormContent.tsx:266
+#: src/components/contact/ContactFormContent.tsx:256
 msgid "Hi Mateusz, we're looking for..."
 msgstr "Hi Mateusz, we're looking for..."
 
@@ -355,11 +354,11 @@ msgstr "High graphics"
 msgid "Hire me"
 msgstr "Hire me"
 
-#: src/lib/constants.tsx:332
+#: src/lib/constants.tsx:334
 msgid "Home page of pstrykweb.pl"
 msgstr "Home page of pstrykweb.pl"
 
-#: src/lib/constants.tsx:451
+#: src/lib/constants.tsx:453
 msgid "Home page of yws.lu"
 msgstr "Home page of yws.lu"
 
@@ -371,7 +370,7 @@ msgstr "I build web and mobile apps end to end in TypeScript, React, Next.js, Re
 msgid "I originate from Poland"
 msgstr "I originate from Poland"
 
-#: src/components/contact/ContactFormContent.tsx:181
+#: src/components/contact/ContactFormContent.tsx:171
 msgid "I'll reply to {sentToEmail}."
 msgstr "I'll reply to {sentToEmail}."
 
@@ -379,11 +378,11 @@ msgstr "I'll reply to {sentToEmail}."
 msgid "I'm Mateusz Muszarski, a full-stack developer from Poland. Code is the tool: I build products that solve real business problems, at a cost that makes sense. "
 msgstr "I'm Mateusz Muszarski, a full-stack developer from Poland. Code is the tool: I build products that solve real business problems, at a cost that makes sense. "
 
-#: src/lib/constants.tsx:382
+#: src/lib/constants.tsx:384
 msgid "Illustration of the Clockful time tracker dashboard"
 msgstr "Illustration of the Clockful time tracker dashboard"
 
-#: src/lib/constants.tsx:179
+#: src/lib/constants.tsx:181
 msgid "INF.02 · INF.03 · INF.04 vocational qualifications"
 msgstr "INF.02 · INF.03 · INF.04 vocational qualifications"
 
@@ -391,7 +390,7 @@ msgstr "INF.02 · INF.03 · INF.04 vocational qualifications"
 msgid "Instagram"
 msgstr "Instagram"
 
-#: src/lib/constants.tsx:372
+#: src/lib/constants.tsx:374
 msgid "Internship · Neoteric · 2026"
 msgstr "Internship · Neoteric · 2026"
 
@@ -401,7 +400,7 @@ msgstr "Internship · Neoteric · 2026"
 msgid "is licensed under"
 msgstr "is licensed under"
 
-#: src/lib/constants.tsx:160
+#: src/lib/constants.tsx:162
 msgid "IT troubleshooting"
 msgstr "IT troubleshooting"
 
@@ -409,7 +408,7 @@ msgstr "IT troubleshooting"
 msgid "Job Experience"
 msgstr "Job Experience"
 
-#: src/lib/constants.tsx:85
+#: src/lib/constants.tsx:87
 msgid "June 2026 – now"
 msgstr "June 2026 – now"
 
@@ -427,6 +426,7 @@ msgstr "language"
 
 #: src/components/LanguageSettingButton.tsx:46
 #: src/components/StartupScreen.tsx:240
+#: src/pages/privacyPolicy/PrivacyPolicyPage.tsx:51
 msgid "Language"
 msgstr "Language"
 
@@ -435,7 +435,7 @@ msgstr "Language"
 msgid "Language: {0}"
 msgstr "Language: {0}"
 
-#: src/lib/constants.tsx:355
+#: src/lib/constants.tsx:357
 msgid "Linkoglot turning a photo of a street into a flashcard"
 msgstr "Linkoglot turning a photo of a street into a flashcard"
 
@@ -443,7 +443,7 @@ msgstr "Linkoglot turning a photo of a street into a flashcard"
 msgid "Low graphics"
 msgstr "Low graphics"
 
-#: src/lib/constants.tsx:230
+#: src/lib/constants.tsx:232
 msgid "Marketing Psychology and Consumer Behavior"
 msgstr "Marketing Psychology and Consumer Behavior"
 
@@ -451,11 +451,11 @@ msgstr "Marketing Psychology and Consumer Behavior"
 msgid "Mars"
 msgstr "Mars"
 
-#: src/components/contact/ContactFormContent.tsx:255
+#: src/components/contact/ContactFormContent.tsx:245
 msgid "Message must be at least 3 characters long."
 msgstr "Message must be at least 3 characters long."
 
-#: src/components/contact/ContactFormContent.tsx:257
+#: src/components/contact/ContactFormContent.tsx:247
 msgid "Message must be at max 2048 characters long."
 msgstr "Message must be at max 2048 characters long."
 
@@ -475,7 +475,7 @@ msgstr "Next project"
 msgid "Next section"
 msgstr "Next section"
 
-#: src/lib/constants.tsx:416
+#: src/lib/constants.tsx:418
 msgid "Open source · npm · 2026"
 msgstr "Open source · npm · 2026"
 
@@ -495,15 +495,15 @@ msgstr "OR"
 msgid "other countries too!"
 msgstr "other countries too!"
 
-#: src/lib/constants.tsx:344
+#: src/lib/constants.tsx:346
 msgid "Own product · solo · 2026"
 msgstr "Own product · solo · 2026"
 
-#: src/lib/constants.tsx:477
+#: src/lib/constants.tsx:479
 msgid "Particle screensaver with the club's logo"
 msgstr "Particle screensaver with the club's logo"
 
-#: src/lib/constants.tsx:394
+#: src/lib/constants.tsx:396
 msgid "Personal · 2026"
 msgstr "Personal · 2026"
 
@@ -511,23 +511,23 @@ msgstr "Personal · 2026"
 msgid "Planet textures by"
 msgstr "Planet textures by"
 
-#: src/components/contact/ContactFormContent.tsx:285
+#: src/components/contact/ContactFormContent.tsx:275
 msgid "Please enter your email, so I can reply."
 msgstr "Please enter your email, so I can reply."
 
-#: src/lib/constants.tsx:113
+#: src/lib/constants.tsx:115
 msgid "Poland"
 msgstr "Poland"
 
-#: src/lib/constants.tsx:123
+#: src/lib/constants.tsx:125
 msgid "Postgres row-level security on all 5 tables, with an audit trigger"
 msgstr "Postgres row-level security on all 5 tables, with an audit trigger"
 
-#: src/components/StartupScreen.tsx:272
+#: src/components/StartupScreen.tsx:273
 msgid "Prefer a fast, mobile-friendly version?"
 msgstr "Prefer a fast, mobile-friendly version?"
 
-#: src/components/contact/ContactFormContent.tsx:339
+#: src/components/contact/ContactFormContent.tsx:342
 msgid "Prefer something else?"
 msgstr "Prefer something else?"
 
@@ -539,11 +539,17 @@ msgstr "Previous project"
 msgid "Previous section"
 msgstr "Previous section"
 
-#: src/lib/constants.tsx:144
+#: src/components/contact/ContactFormContent.tsx:332
+#: src/components/StartupScreen.tsx:289
+#: src/pages/privacyPolicy/PrivacyPolicyPage.tsx:30
+msgid "Privacy policy"
+msgstr "Privacy policy"
+
+#: src/lib/constants.tsx:146
 msgid "Programmer (intern)"
 msgstr "Programmer (intern)"
 
-#: src/lib/constants.tsx:182
+#: src/lib/constants.tsx:184
 msgid "Programming technician"
 msgstr "Programming technician"
 
@@ -553,11 +559,11 @@ msgstr "Programming technician"
 msgid "Projects"
 msgstr "Projects"
 
-#: src/lib/constants.tsx:90
+#: src/lib/constants.tsx:92
 msgid "Real commercial projects for a Polish software house, worked on remotely."
 msgstr "Real commercial projects for a Polish software house, worked on remotely."
 
-#: src/lib/constants.tsx:86
+#: src/lib/constants.tsx:88
 msgid "Remote, Poland"
 msgstr "Remote, Poland"
 
@@ -589,21 +595,21 @@ msgstr "Section {0} of {1}: {2}, planet {3}"
 msgid "Sections"
 msgstr "Sections"
 
-#: src/components/contact/ContactFormContent.tsx:328
+#: src/components/contact/ContactFormContent.tsx:323
 msgid "Send message"
 msgstr "Send message"
 
-#: src/components/contact/ContactFormContent.tsx:106
-#: src/components/contact/ContactFormContent.tsx:328
+#: src/components/contact/ContactFormContent.tsx:101
+#: src/components/contact/ContactFormContent.tsx:323
 msgid "Sending..."
 msgstr "Sending..."
 
-#: src/components/contact/ContactFormContent.tsx:131
-#: src/components/contact/ContactFormContent.tsx:175
+#: src/components/contact/ContactFormContent.tsx:126
+#: src/components/contact/ContactFormContent.tsx:165
 msgid "Sent. Thank you!"
 msgstr "Sent. Thank you!"
 
-#: src/lib/constants.tsx:95
+#: src/lib/constants.tsx:97
 msgid "shipped it to production on Vercel"
 msgstr "shipped it to production on Vercel"
 
@@ -619,7 +625,7 @@ msgstr "Show more, less relevant certificates"
 msgid "Show project {title}"
 msgstr "Show project {title}"
 
-#: src/lib/constants.tsx:399
+#: src/lib/constants.tsx:401
 msgid "Sign in screen of Malatro"
 msgstr "Sign in screen of Malatro"
 
@@ -627,11 +633,11 @@ msgstr "Sign in screen of Malatro"
 msgid "Skills and tools"
 msgstr "Skills and tools"
 
-#: src/lib/constants.tsx:346
+#: src/lib/constants.tsx:348
 msgid "Snap a photo, get flashcards. A subscription language-learning app in 30 languages, built and shipped solo to both app stores."
 msgstr "Snap a photo, get flashcards. A subscription language-learning app in 30 languages, built and shipped solo to both app stores."
 
-#: src/components/contact/ContactFormContent.tsx:137
+#: src/components/contact/ContactFormContent.tsx:132
 msgid "Something went wrong with sending the message. Please email me directly at {CONTACT_EMAIL}"
 msgstr "Something went wrong with sending the message. Please email me directly at {CONTACT_EMAIL}"
 
@@ -645,11 +651,11 @@ msgstr "Sound Effect by"
 msgid "Sounds"
 msgstr "Sounds"
 
-#: src/lib/constants.tsx:317
+#: src/lib/constants.tsx:319
 msgid "Source code"
 msgstr "Source code"
 
-#: src/lib/constants.tsx:143
+#: src/lib/constants.tsx:145
 msgid "Starogard Gdański, Pomerania, Poland"
 msgstr "Starogard Gdański, Pomerania, Poland"
 
@@ -657,19 +663,19 @@ msgstr "Starogard Gdański, Pomerania, Poland"
 msgid "START"
 msgstr "START"
 
-#: src/components/contact/ContactFormContent.tsx:242
+#: src/components/contact/ContactFormContent.tsx:232
 msgid "Subject:"
 msgstr "Subject:"
 
-#: src/lib/constants.tsx:151
+#: src/lib/constants.tsx:153
 msgid "technical support"
 msgstr "technical support"
 
-#: src/lib/constants.tsx:425
+#: src/lib/constants.tsx:427
 msgid "Terminal running lingui-translate-ai"
 msgstr "Terminal running lingui-translate-ai"
 
-#: src/lib/constants.tsx:204
+#: src/lib/constants.tsx:206
 msgid "The Complete JavaScript Course 2023: From Zero to Expert!"
 msgstr "The Complete JavaScript Course 2023: From Zero to Expert!"
 
@@ -677,11 +683,11 @@ msgstr "The Complete JavaScript Course 2023: From Zero to Expert!"
 msgid "The control panel of your spaceship, which will take you on a tour of Mateusz Muszarski's portfolio"
 msgstr "The control panel of your spaceship, which will take you on a tour of Mateusz Muszarski's portfolio"
 
-#: src/lib/constants.tsx:196
+#: src/lib/constants.tsx:198
 msgid "The Ultimate React Course 2024: React, Next.js, Redux & More"
 msgstr "The Ultimate React Course 2024: React, Next.js, Redux & More"
 
-#: src/components/contact/ContactFormContent.tsx:287
+#: src/components/contact/ContactFormContent.tsx:277
 msgid "This email doesn't look right."
 msgstr "This email doesn't look right."
 
@@ -689,7 +695,7 @@ msgstr "This email doesn't look right."
 msgid "This is a heavy 3D experience made for bigger screens. It works on phones too, but it's best on a computer."
 msgstr "This is a heavy 3D experience made for bigger screens. It works on phones too, but it's best on a computer."
 
-#: src/lib/constants.tsx:187
+#: src/lib/constants.tsx:189
 msgid "Three.js Journey — Learn WebGL with Three.js"
 msgstr "Three.js Journey — Learn WebGL with Three.js"
 
@@ -697,18 +703,22 @@ msgstr "Three.js Journey — Learn WebGL with Three.js"
 msgid "Turn your phone sideways for the best view."
 msgstr "Turn your phone sideways for the best view."
 
-#: src/lib/constants.tsx:221
+#: src/components/contact/ContactFormContent.tsx:286
+msgid "Used to reply to you"
+msgstr "Used to reply to you"
+
+#: src/lib/constants.tsx:223
 msgid "UX Writing: Microcopy, User Research, Accessibility & More"
 msgstr "UX Writing: Microcopy, User Research, Accessibility & More"
 
-#: src/lib/constants.tsx:335
-#: src/lib/constants.tsx:407
-#: src/lib/constants.tsx:459
-#: src/lib/constants.tsx:485
+#: src/lib/constants.tsx:337
+#: src/lib/constants.tsx:409
+#: src/lib/constants.tsx:461
+#: src/lib/constants.tsx:487
 msgid "View it live"
 msgstr "View it live"
 
-#: src/lib/constants.tsx:433
+#: src/lib/constants.tsx:435
 msgid "View on npm"
 msgstr "View on npm"
 
@@ -729,38 +739,34 @@ msgstr "Web and mobile products in TypeScript, React and three.js"
 msgid "What I did"
 msgstr "What I did"
 
-#: src/components/contact/ContactFormContent.tsx:209
+#: src/components/contact/ContactFormContent.tsx:199
 msgid "What is it about?"
 msgstr "What is it about?"
 
-#: src/components/contact/ContactFormContent.tsx:293
+#: src/components/contact/ContactFormContent.tsx:284
 msgid "Where do I reply?"
 msgstr "Where do I reply?"
 
-#: src/lib/constants.tsx:161
+#: src/lib/constants.tsx:163
 msgid "working with people"
 msgstr "working with people"
 
-#: src/components/contact/ContactFormContent.tsx:188
+#: src/components/contact/ContactFormContent.tsx:178
 msgid "Write another message"
 msgstr "Write another message"
 
-#: src/lib/constants.tsx:154
+#: src/lib/constants.tsx:156
 msgid "writing and creating social media posts"
 msgstr "writing and creating social media posts"
 
-#: src/components/contact/ContactFormContent.tsx:299
+#: src/components/contact/ContactFormContent.tsx:294
 msgid "you@company.com"
 msgstr "you@company.com"
 
-#: src/components/contact/ContactFormContent.tsx:331
-msgid "Your email is used only to reply to you."
-msgstr "Your email is used only to reply to you."
-
-#: src/components/contact/ContactFormContent.tsx:263
+#: src/components/contact/ContactFormContent.tsx:253
 msgid "Your message"
 msgstr "Your message"
 
-#: src/lib/constants.tsx:248
+#: src/lib/constants.tsx:250
 msgid "Youth Entrepreneurship in Palanga, Lithuania"
 msgstr "Youth Entrepreneurship in Palanga, Lithuania"

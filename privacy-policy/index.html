@@ -1,0 +1,52 @@
+<!doctype html>
+<!-- The utility classes undo the experience's fixed, non-scrollable viewport (see the base layer of src/index.css) -->
+<html lang="en" class="h-auto overflow-auto overscroll-auto">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#09090b" />
+    <meta name="color-scheme" content="dark" />
+    <meta
+      name="description"
+      content="Privacy policy of Mateusz Muszarski's 3D space portfolio: which personal data are processed, why, for how long, and your rights."
+    />
+    <meta name="author" content="Mateusz Muszarski" />
+    <meta name="robots" content="noindex, nofollow" />
+    <link
+      rel="canonical"
+      href="https://3d-space-folio.vercel.app/privacy-policy/"
+    />
+    <link
+      rel="preload"
+      href="/assets/fonts/Space_Grotesk.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <title>Privacy policy | Mateusz Muszarski</title>
+    <style>
+      /* Shown before the app (and its CSS) loads */
+      html,
+      body {
+        margin: 0;
+        background: #09090b;
+        color: #fafafa;
+      }
+    </style>
+  </head>
+  <body class="h-auto overflow-visible touch-auto overscroll-auto">
+    <noscript>
+      <p style="font-family: system-ui, sans-serif; padding: 1rem">
+        Please enable JavaScript to read the privacy policy. / Włącz obsługę
+        JavaScriptu, aby przeczytać politykę prywatności.
+      </p>
+    </noscript>
+    <div id="root" class="h-auto overflow-visible"></div>
+    <script type="module" src="/src/pages/privacyPolicy/main.tsx"></script>
+  </body>
+</html>
