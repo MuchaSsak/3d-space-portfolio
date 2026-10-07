@@ -11,9 +11,9 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { useScrollContext } from "@/contexts/ScrollContext";
 import { useSettingsContext } from "@/contexts/SettingsContext";
 import {
+  AVATAR_IMG_SRC,
   getResumeLink,
   getWebsiteLink,
-  GITHUB_AVATAR_LINK,
 } from "@/lib/constants";
 import { contactFormScrollProgress } from "@/lib/sections";
 
@@ -41,7 +41,7 @@ function TopBar() {
             <AvatarImage
               width={28}
               height={28}
-              src={GITHUB_AVATAR_LINK}
+              src={AVATAR_IMG_SRC}
               alt=""
             />
             <AvatarFallback>MM</AvatarFallback>

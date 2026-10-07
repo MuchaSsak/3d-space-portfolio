@@ -14,7 +14,7 @@ import LanguageSettingButton from "@/components/LanguageSettingButton";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useSettingsContext } from "@/contexts/SettingsContext";
-import { getWebsiteLink } from "@/lib/constants";
+import { getWebsiteLink, PRIVACY_POLICY_LINK } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 // Never keep people waiting forever if some asset can't be loaded
@@ -267,16 +267,29 @@ function StartupScreen() {
         </div>
       </div>
 
-      {/* Lighter alternative */}
-      <p className="absolute bottom-[max(1rem,env(safe-area-inset-bottom))] left-1/2 -translate-x-1/2 z-10 text-center text-sm text-foreground/60 w-max max-w-[calc(100vw-2rem)]">
-        {t`Prefer a fast, mobile-friendly version?`}{" "}
+      <div className="absolute bottom-[max(1rem,env(safe-area-inset-bottom))] left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1 text-center w-max max-w-[calc(100vw-2rem)]">
+        {/* Lighter alternative */}
+        <p className="text-sm text-foreground/60">
+          {t`Prefer a fast, mobile-friendly version?`}{" "}
+          <a
+            href={getWebsiteLink(language)}
+            className="font-medium text-foreground/85 underline underline-offset-2 hover:text-foreground focus-visible:text-foreground rounded-sm outline-none focus-visible:ring-[3px] focus-visible:ring-ring/60"
+          >
+            matmuszarski.space
+          </a>
+        </p>
+
+        {/* Opens in a new tab, so the loaded scene isn't lost */}
         <a
-          href={getWebsiteLink(language)}
-          className="font-medium text-foreground/85 underline underline-offset-2 hover:text-foreground focus-visible:text-foreground rounded-sm outline-none focus-visible:ring-[3px] focus-visible:ring-ring/60"
+          href={PRIVACY_POLICY_LINK}
+          target="_blank"
+          rel="noopener"
+          className="text-xs text-foreground/45 underline underline-offset-2 hover:text-foreground/85 focus-visible:text-foreground/85 rounded-sm outline-none focus-visible:ring-[3px] focus-visible:ring-ring/60"
         >
-          matmuszarski.space
+          {t`Privacy policy`}
+          <span className="sr-only"> {t`(opens in a new tab)`}</span>
         </a>
-      </p>
+      </div>
 
       {/* Start animation side panels */}
       {createPortal(

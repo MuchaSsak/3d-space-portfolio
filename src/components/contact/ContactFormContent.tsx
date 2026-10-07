@@ -4,17 +4,12 @@ import { useEffect, useId, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
-import {
-  CheckIcon,
-  CopyIcon,
-  DownloadIcon,
-  Github,
-  Linkedin,
-} from "@/components/icons";
+import { CheckIcon, CopyIcon, Github, Linkedin } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -28,9 +23,9 @@ import {
   EMAILJS_PUBLIC_KEY,
   EMAILJS_SERVICE_ID,
   EMAILJS_TEMPLATE_ID,
-  getResumeLink,
   GITHUB_LINK,
   LINKEDIN_LINK,
+  PRIVACY_POLICY_LINK,
 } from "@/lib/constants";
 import { type ContactTopic, onContactRequest } from "@/lib/contactRequest";
 import { cn } from "@/lib/utils";
@@ -156,14 +151,9 @@ function ContactFormContent({ className }: { className?: string }) {
   return (
     <div className={cn("flex flex-col gap-5 short:gap-3 w-[27.5rem] max-w-full", className)}>
         {/* Title */}
-        <div className="flex flex-col gap-2">
-          <h2 className="w-max max-w-full text-blue-gradient text-7xl short:text-4xl max-sm:text-5xl font-bold pb-1">
-            {t`Contact`}
-          </h2>
-          <p className="text-foreground/85 text-lg short:text-sm">
-            {t`A role, a project or a question? One message is enough, I usually reply within a day.`}
-          </p>
-        </div>
+        <h2 className="w-max max-w-full text-blue-gradient text-7xl short:text-4xl max-sm:text-5xl font-bold pb-1">
+          {t`Contact`}
+        </h2>
 
         {sentToEmail ? (
           /* Success state */
@@ -290,7 +280,12 @@ function ContactFormContent({ className }: { className?: string }) {
                 }}
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>{t`Where do I reply?`}</FormLabel>
+                    <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+                      <FormLabel>{t`Where do I reply?`}</FormLabel>
+                      <FormDescription className="text-xs">
+                        {t`Used to reply to you`}
+                      </FormDescription>
+                    </div>
                     <FormControl>
                       <Input
                         type="email"
@@ -328,7 +323,15 @@ function ContactFormContent({ className }: { className?: string }) {
                 {isSendingEmail ? t`Sending...` : t`Send message`}
               </Button>
               <p className="text-xs text-muted-foreground -mt-2">
-                {t`Your email is used only to reply to you.`}
+                <a
+                  href={PRIVACY_POLICY_LINK}
+                  target="_blank"
+                  rel="noopener"
+                  className="underline underline-offset-2 hover:text-foreground focus-visible:text-foreground rounded-sm outline-none focus-visible:ring-[3px] focus-visible:ring-ring/60"
+                >
+                  {t`Privacy policy`}
+                  <span className="sr-only"> {t`(opens in a new tab)`}</span>
+                </a>
               </p>
             </form>
           </Form>
@@ -377,17 +380,6 @@ function ContactFormContent({ className }: { className?: string }) {
                 <Github aria-hidden />
                 GitHub
                 <span className="sr-only">{t`(opens in a new tab)`}</span>
-              </a>
-            </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              asChild
-              className="bg-background/40!"
-            >
-              <a href={getResumeLink(language)} target="_blank" rel="noopener" download>
-                <DownloadIcon aria-hidden />
-                {t`CV (PDF)`}
               </a>
             </Button>
           </div>
