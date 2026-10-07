@@ -1,3 +1,12 @@
+# [1.4.0](https://github.com/MuchaSsak/3d-space-portfolio/compare/v1.3.0...v1.4.0) (2026-10-07)
+
+
+### Features
+
+* privacy policy page ([7809c3f](https://github.com/MuchaSsak/3d-space-portfolio/commit/7809c3ff90d078b7a19d34f51d78eac0d178b9a5))
+
+
+
 # [1.3.0](https://github.com/MuchaSsak/3d-space-portfolio/compare/v1.2.0...v1.3.0) (2026-10-07)
 
 
@@ -32,15 +41,6 @@
 ### Bug Fixes
 
 * update job experience ([fb04628](https://github.com/MuchaSsak/3d-space-portfolio/commit/fb04628035e1912546af0aa3a60e393f749fea94))
-
-
-
-## [1.1.5](https://github.com/MuchaSsak/3d-space-portfolio/compare/v1.1.4...v1.1.5) (2026-03-17)
-
-
-### Bug Fixes
-
-* update projects ([d1fd9c4](https://github.com/MuchaSsak/3d-space-portfolio/commit/d1fd9c47f57d1d30a1550e3d064b09a51cb29a27))
 
 
 
