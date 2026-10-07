@@ -20,3 +20,6 @@ export function debouncer<Params extends any[]>(
     }, timeout);
   };
 }
+
+// Opts a 3D object out of raycasting (pointer events and the lens flare occlusion test, which raycasts the whole scene every frame)
+export function skipRaycast() {}

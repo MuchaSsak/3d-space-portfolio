@@ -69,7 +69,10 @@ function ScrollHint({ isVisible }: { isVisible: boolean }) {
           <span className="col-start-2">
             <Keycap Icon={ChevronUpIcon} />
           </span>
-          <Keycap Icon={ChevronLeftIcon} />
+          {/* Pinned to the first column, so it wraps under the up key instead of sitting next to it */}
+          <span className="col-start-1">
+            <Keycap Icon={ChevronLeftIcon} />
+          </span>
           <Keycap Icon={ChevronDownIcon} pressDelay={0} />
           <Keycap Icon={ChevronRightIcon} pressDelay={1.2} />
         </span>

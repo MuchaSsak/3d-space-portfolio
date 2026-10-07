@@ -135,3 +135,8 @@ expo-env.d.ts
 # @end expo-cli
 
 .swc
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/

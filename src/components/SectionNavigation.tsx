@@ -26,7 +26,8 @@ function SectionNavigation() {
   const { t } = useLingui();
   const { scrollProgress, goToScrollProgress, isScrollingPaused } =
     useScrollContext();
-  const { hasStartedExperience } = useSettingsContext();
+  const { hasStartedExperience, canStartCapturingScroll } =
+    useSettingsContext();
   const {
     activeProjectIndex,
     projectsCount,
@@ -89,7 +90,10 @@ function SectionNavigation() {
   return (
     <div
       ref={containerRef}
+      // Navigation state for end-to-end tests
       data-scroll-progress={scrollProgress}
+      data-scrolling-paused={isScrollingPaused}
+      data-scroll-input-ready={canStartCapturingScroll}
       className="fixed invisible opacity-0 bottom-[max(0.5rem,env(safe-area-inset-bottom))] short:bottom-[max(0.25rem,env(safe-area-inset-bottom))] left-1/2 z-40 -translate-x-1/2 flex flex-col items-center gap-2 short:gap-1 max-w-[calc(100vw-0.5rem)]"
     >
       {/* Scroll hint, shown while the visitor is idle */}

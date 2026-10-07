@@ -234,24 +234,24 @@ function StartupScreen() {
         />
 
         <div className="opacity-0" ref={settingsButtonsContainerRef}>
-          {/* Settings buttons */}
+          {/* Settings buttons (the hit area reaches past the label, so they stay tappable when the panel is scaled down) */}
           <LanguageSettingButton
             sideOffset={32}
             buttonText={t`Language`}
             buttonVariant="ghost"
-            buttonClassName="bg-transparent! w-[11.5rem] px-3 h-10 top-[calc(50%_+_14.8rem)] left-[calc(50%_-_15.25rem)] -translate-x-1/2 absolute [transform:perspective(30rem)_rotateY(-10deg)_rotateX(20deg)_skewX(-5deg)] text-[#400000] hover:text-[#7D0000] focus-visible:text-[#7D0000] focus-visible:border-2 focus-visible:border-[#7D0000] text-2xl focus-visible:[box-shadow:0_0_3rem_var(--foreground)] hover:[box-shadow:0_0_3rem_var(--foreground)]"
+            buttonClassName="before:absolute before:-inset-x-6 before:-inset-y-5 bg-transparent! w-[11.5rem] px-3 h-10 top-[calc(50%_+_14.8rem)] left-[calc(50%_-_15.25rem)] -translate-x-1/2 absolute [transform:perspective(30rem)_rotateY(-10deg)_rotateX(20deg)_skewX(-5deg)] text-[#400000] hover:text-[#7D0000] focus-visible:text-[#7D0000] focus-visible:border-2 focus-visible:border-[#7D0000] text-2xl focus-visible:[box-shadow:0_0_3rem_var(--foreground)] hover:[box-shadow:0_0_3rem_var(--foreground)]"
           />
           <GraphicsSettingButton
             sideOffset={32}
             buttonText={t`Graphics`}
             buttonVariant="ghost"
-            buttonClassName="bg-transparent! w-[11.5rem] px-3 h-10 top-[calc(50%_+_14.8rem)] left-1/2 -translate-x-1/2 absolute [transform:perspective(30rem)_rotateX(20deg)] text-[#400000] hover:text-[#7D0000] focus-visible:text-[#7D0000] focus-visible:border-2 focus-visible:border-[#7D0000] text-2xl focus-visible:[box-shadow:0_0_3rem_var(--foreground)] hover:[box-shadow:0_0_3rem_var(--foreground)]"
+            buttonClassName="before:absolute before:-inset-x-6 before:-inset-y-5 bg-transparent! w-[11.5rem] px-3 h-10 top-[calc(50%_+_14.8rem)] left-1/2 -translate-x-1/2 absolute [transform:perspective(30rem)_rotateX(20deg)] text-[#400000] hover:text-[#7D0000] focus-visible:text-[#7D0000] focus-visible:border-2 focus-visible:border-[#7D0000] text-2xl focus-visible:[box-shadow:0_0_3rem_var(--foreground)] hover:[box-shadow:0_0_3rem_var(--foreground)]"
           />
           <AudioSettingButton
             sideOffset={32}
             buttonText={t`Sounds`}
             buttonVariant="ghost"
-            buttonClassName="bg-transparent! w-[11.5rem] px-3 h-10 top-[calc(50%_+_14.8rem)] right-[calc(50%_-_14.75rem)] translate-x-1/2 absolute [transform:perspective(30rem)_rotateY(10deg)_rotateX(20deg)_skewX(5deg)] text-[#400000] hover:text-[#7D0000] focus-visible:text-[#7D0000] focus-visible:border-2 focus-visible:border-[#7D0000] text-2xl focus-visible:[box-shadow:0_0_3rem_var(--foreground)] hover:[box-shadow:0_0_3rem_var(--foreground)]"
+            buttonClassName="before:absolute before:-inset-x-6 before:-inset-y-5 bg-transparent! w-[11.5rem] px-3 h-10 top-[calc(50%_+_14.8rem)] right-[calc(50%_-_14.75rem)] translate-x-1/2 absolute [transform:perspective(30rem)_rotateY(10deg)_rotateX(20deg)_skewX(5deg)] text-[#400000] hover:text-[#7D0000] focus-visible:text-[#7D0000] focus-visible:border-2 focus-visible:border-[#7D0000] text-2xl focus-visible:[box-shadow:0_0_3rem_var(--foreground)] hover:[box-shadow:0_0_3rem_var(--foreground)]"
           />
 
           {/* Start button */}

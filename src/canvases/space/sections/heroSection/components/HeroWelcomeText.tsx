@@ -14,6 +14,7 @@ import {
   heroWelcomeTextCloseupScrollProgress,
   heroWelcomeTextScrollProgress,
 } from "@/lib/sections";
+import { skipRaycast } from "@/lib/utils";
 
 const fontUrl = "/assets/fonts/Space_Grotesk_Bold_Title.json";
 const matcapUrls = [
@@ -54,7 +55,8 @@ function HeroWelcomeText() {
       >
         <Billboard position={[11, -0.5, -12.5]}>
           <Text3D
-            userData={{ lensflare: "no-occlusion" }}
+            // Never occludes the lens flare, and its ~25k vertices are too costly to raycast every frame
+            raycast={skipRaycast}
             curveSegments={4}
             bevelEnabled
             bevelSize={0.02}
@@ -76,7 +78,8 @@ function HeroWelcomeText() {
           </Text3D>
 
           <Text3D
-            userData={{ lensflare: "no-occlusion" }}
+            // Never occludes the lens flare, and its ~25k vertices are too costly to raycast every frame
+            raycast={skipRaycast}
             curveSegments={4}
             height={0.05}
             bevelEnabled

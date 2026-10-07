@@ -5,6 +5,7 @@ import * as THREE from "three";
 import useStarsBufferPositions from "@/canvases/space/stars/hooks/useStarsBufferPositions";
 import useStarsBufferSizes from "@/canvases/space/stars/hooks/useStarsBufferSizes";
 import StarsShaderMaterial from "@/canvases/space/stars/shaders/stars/material";
+import { skipRaycast } from "@/lib/utils";
 
 /**
  * Extend shader materials and type them
@@ -55,7 +56,8 @@ function StarsModel() {
 
       <group ref={skyDomeRef}>
         <points
-          userData={{ lensflare: "no-occlusion" }}
+          // Never occludes the lens flare, and testing 5000 points every frame is wasted work
+          raycast={skipRaycast}
           scale={skyDomeRadius}
           renderOrder={-1}
           frustumCulled={false}
