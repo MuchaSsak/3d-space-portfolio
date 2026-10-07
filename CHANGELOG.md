@@ -1,3 +1,12 @@
+# [1.5.0](https://github.com/MuchaSsak/3d-space-portfolio/compare/v1.4.0...v1.5.0) (2026-10-07)
+
+
+### Features
+
+* responsive start menu, cheaper lens flare, e2e test suite ([c447a63](https://github.com/MuchaSsak/3d-space-portfolio/commit/c447a6348a775b7b98590edf0d384450b052c379))
+
+
+
 # [1.4.0](https://github.com/MuchaSsak/3d-space-portfolio/compare/v1.3.0...v1.4.0) (2026-10-07)
 
 
@@ -32,15 +41,6 @@
 ### Bug Fixes
 
 * work experience ruigrok title ([2b51258](https://github.com/MuchaSsak/3d-space-portfolio/commit/2b51258e4046045f0eff0310022cef49000c6330))
-
-
-
-## [1.1.6](https://github.com/MuchaSsak/3d-space-portfolio/compare/v1.1.5...v1.1.6) (2026-03-17)
-
-
-### Bug Fixes
-
-* update job experience ([fb04628](https://github.com/MuchaSsak/3d-space-portfolio/commit/fb04628035e1912546af0aa3a60e393f749fea94))
 
 
 
