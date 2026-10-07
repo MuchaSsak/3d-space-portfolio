@@ -15,7 +15,7 @@ msgstr ""
 msgid " for amateur photography of those places "
 msgstr " dla amatorskiej fotografii tych miejsc "
 
-#: src/components/TopBar.tsx:59
+#: src/components/TopBar.tsx:57
 msgid "(main portfolio, opens in a new tab)"
 msgstr "(główne portfolio, otwiera się w nowej karcie)"
 
@@ -29,7 +29,7 @@ msgid "(opens in a new tab)"
 msgstr "(otwiera się w nowej karcie)"
 
 #: src/canvases/space/sections/jobExperienceSection/components/JobExperienceDownloadResume.tsx:49
-#: src/components/TopBar.tsx:83
+#: src/components/TopBar.tsx:73
 msgid "(PDF)"
 msgstr "(PDF)"
 
@@ -153,10 +153,6 @@ msgstr "Ale byłem też w"
 msgid "by"
 msgstr "od"
 
-#: src/components/ResetSettingsDialogButton.tsx:53
-msgid "Cancel"
-msgstr "Anuluj"
-
 #: src/canvases/space/sections/certificatesSection/components/CertificatesTitle.tsx:31
 #: src/lib/sections.ts:74
 msgid "Certificates"
@@ -212,11 +208,7 @@ msgstr "CompTIA A+ Core 1 (220-1101) Complete Course & Practice Exam"
 msgid "Contact"
 msgstr "Kontakt"
 
-#: src/canvases/space/sections/heroSection/components/HeroWelcomeText.tsx:131
-msgid "Contact me"
-msgstr "Napisz do mnie"
-
-#: src/components/MobileWarning.tsx:105
+#: src/components/MobileWarning.tsx:103
 msgid "Continue to the 3D version"
 msgstr "Przejdź do wersji 3D"
 
@@ -237,7 +229,7 @@ msgstr "Podziękowania"
 msgid "Credits 💖"
 msgstr "Podziękowania 💖"
 
-#: src/components/TopBar.tsx:82
+#: src/components/TopBar.tsx:72
 msgid "CV"
 msgstr "CV"
 
@@ -283,10 +275,6 @@ msgstr "kierowałem agentami AI i weryfikowałem wszystko, co zbudowały, od reg
 msgid "Dismiss"
 msgstr "Zamknij"
 
-#: src/components/ResetSettingsDialogButton.tsx:45
-msgid "Do you want to reset all settings?"
-msgstr "Czy chcesz zresetować wszystkie ustawienia?"
-
 #: src/canvases/space/sections/jobExperienceSection/components/JobExperienceDownloadResume.tsx:47
 msgid "Download CV"
 msgstr "Pobierz CV"
@@ -322,14 +310,14 @@ msgstr "z"
 msgid "front-end development"
 msgstr "programowanie front-end"
 
-#: src/canvases/space/sections/heroSection/components/HeroWelcomeText.tsx:112
-#: src/components/TopBar.tsx:56
-msgid "Full-stack developer"
-msgstr "Programista full stack"
+#: src/canvases/space/sections/heroSection/components/HeroWelcomeText.tsx:103
+#: src/components/TopBar.tsx:54
+msgid "Full-stack product engineer"
+msgstr "Full-stack product engineer"
 
 #: src/components/StartupScreen.tsx:207
-msgid "Full-stack developer · 3D space portfolio"
-msgstr "Programista full stack · kosmiczne portfolio 3D"
+msgid "Full-stack product engineer · 3D space portfolio"
+msgstr "Full-stack product engineer · kosmiczne portfolio 3D"
 
 #: src/components/StartupScreen.tsx:246
 msgid "Graphics"
@@ -345,7 +333,7 @@ msgstr "Ustawienia graficzne"
 msgid "Graphics: {0}"
 msgstr "Grafika: {0}"
 
-#: src/components/MobileWarning.tsx:77
+#: src/components/MobileWarning.tsx:76
 msgid "Heads up!"
 msgstr "Uwaga!"
 
@@ -361,7 +349,7 @@ msgstr "Cześć Mateusz, szukamy..."
 msgid "High graphics"
 msgstr "Wysoka grafika"
 
-#: src/components/TopBar.tsx:93
+#: src/components/TopBar.tsx:83
 msgid "Hire me"
 msgstr "Zatrudnij mnie"
 
@@ -427,7 +415,7 @@ msgstr "czerwiec 2026 – obecnie"
 msgid "Jupiter"
 msgstr "Jowisz"
 
-#: src/components/MobileWarning.tsx:91
+#: src/components/MobileWarning.tsx:88
 msgid "Just want to see my work quickly? My main portfolio is fast and made for every screen."
 msgstr "Chcesz szybko zobaczyć moje projekty? Moje główne portfolio jest lekkie i działa na każdym ekranie."
 
@@ -477,15 +465,19 @@ msgstr "Muzyka od"
 msgid "Neptune"
 msgstr "Neptun"
 
-#: src/components/SectionNavigation.tsx:107
+#: src/components/SectionNavigation.tsx:133
 msgid "Next project"
 msgstr "Następny projekt"
+
+#: src/components/ScrollHint.tsx:104
+msgid "Next section"
+msgstr "Następna sekcja"
 
 #: src/lib/constants.tsx:416
 msgid "Open source · npm · 2026"
 msgstr "Open source · npm · 2026"
 
-#: src/components/MobileWarning.tsx:96
+#: src/components/MobileWarning.tsx:94
 msgid "Open the main portfolio"
 msgstr "Otwórz główne portfolio"
 
@@ -537,9 +529,13 @@ msgstr "Wolisz szybką wersję, wygodną na telefonie?"
 msgid "Prefer something else?"
 msgstr "Wolisz inny kontakt?"
 
-#: src/components/SectionNavigation.tsx:89
+#: src/components/SectionNavigation.tsx:115
 msgid "Previous project"
 msgstr "Poprzedni projekt"
+
+#: src/components/ScrollHint.tsx:84
+msgid "Previous section"
+msgstr "Poprzednia sekcja"
 
 #: src/lib/constants.tsx:144
 msgid "Programmer (intern)"
@@ -550,7 +546,7 @@ msgid "Programming technician"
 msgstr "Technik programista"
 
 #: src/canvases/space/sections/projectsSection/components/ProjectsTitle.tsx:29
-#: src/components/SectionNavigation.tsx:81
+#: src/components/SectionNavigation.tsx:107
 #: src/lib/sections.ts:82
 msgid "Projects"
 msgstr "Projekty"
@@ -563,15 +559,6 @@ msgstr "Prawdziwe projekty komercyjne dla polskiego software house'u, w pracy zd
 msgid "Remote, Poland"
 msgstr "Zdalnie, Polska"
 
-#: src/components/ResetSettingsDialogButton.tsx:56
-msgid "Reset all"
-msgstr "Zresetuj wszystko"
-
-#: src/components/ResetSettingsDialogButton.tsx:33
-#: src/components/ResetSettingsDialogButton.tsx:34
-msgid "Reset all settings"
-msgstr "Zresetuj wszystkie ustawienia"
-
 #: src/components/MobileWarning.tsx:44
 msgid "Rotate your phone for the best view"
 msgstr "Obróć telefon, żeby lepiej widzieć"
@@ -579,10 +566,6 @@ msgstr "Obróć telefon, żeby lepiej widzieć"
 #: src/lib/sections.ts:83
 msgid "Saturn"
 msgstr "Saturn"
-
-#: src/components/SectionNavigation.tsx:68
-msgid "Scroll or use the arrow keys"
-msgstr "Przewiń lub użyj strzałek"
 
 #: src/components/CertificatesPanel.tsx:126
 msgid "Scroll past the end of the list to fly on to the projects"
@@ -596,17 +579,13 @@ msgstr "Szukaj"
 #. placeholder {1}: NAVIGATION_CHAPTERS.length
 #. placeholder {2}: activeChapter.Label()
 #. placeholder {3}: activeChapter.Planet()
-#: src/components/SectionNavigation.tsx:184
+#: src/components/SectionNavigation.tsx:210
 msgid "Section {0} of {1}: {2}, planet {3}"
 msgstr "Sekcja {0} z {1}: {2}, planeta {3}"
 
-#: src/components/SectionNavigation.tsx:115
+#: src/components/SectionNavigation.tsx:141
 msgid "Sections"
 msgstr "Sekcje"
-
-#: src/canvases/space/sections/heroSection/components/HeroWelcomeText.tsx:124
-msgid "See my projects"
-msgstr "Zobacz moje projekty"
 
 #: src/components/contact/ContactFormContent.tsx:328
 msgid "Send message"
@@ -680,10 +659,6 @@ msgstr "START"
 msgid "Subject:"
 msgstr "Temat:"
 
-#: src/components/SectionNavigation.tsx:69
-msgid "Swipe up"
-msgstr "Przesuń w górę"
-
 #: src/lib/constants.tsx:151
 msgid "technical support"
 msgstr "wsparcie techniczne"
@@ -704,15 +679,11 @@ msgstr "Panel sterowania Twojego statku kosmicznego, który zabierze Cię w podr
 msgid "The Ultimate React Course 2024: React, Next.js, Redux & More"
 msgstr "The Ultimate React Course 2024: React, Next.js, Redux & More"
 
-#: src/components/ResetSettingsDialogButton.tsx:48
-msgid "This action cannot be undone. This will permanently delete all of your local storage data and totally refresh the experience."
-msgstr "Ta akcja nie może zostać odwrócona. To permanentnie usunie wszystkie twoje dane przeglądarkowe oraz totalnie odświeży doświadczenie."
-
 #: src/components/contact/ContactFormContent.tsx:287
 msgid "This email doesn't look right."
 msgstr "Ten adres e-mail wygląda na niepoprawny."
 
-#: src/components/MobileWarning.tsx:84
+#: src/components/MobileWarning.tsx:81
 msgid "This is a heavy 3D experience made for bigger screens. It works on phones too, but it's best on a computer."
 msgstr "To ciężkie doświadczenie 3D stworzone z myślą o większych ekranach. Działa też na telefonach, ale najlepiej wygląda na komputerze."
 
@@ -720,7 +691,7 @@ msgstr "To ciężkie doświadczenie 3D stworzone z myślą o większych ekranach
 msgid "Three.js Journey — Learn WebGL with Three.js"
 msgstr "Three.js Journey — Learn WebGL with Three.js"
 
-#: src/components/MobileWarning.tsx:88
+#: src/components/MobileWarning.tsx:85
 msgid "Turn your phone sideways for the best view."
 msgstr "Obróć telefon poziomo, żeby lepiej widzieć."
 
@@ -748,7 +719,7 @@ msgstr "Odwiedź LinkedIn"
 msgid "Volume"
 msgstr "Głośność"
 
-#: src/canvases/space/sections/heroSection/components/HeroWelcomeText.tsx:115
+#: src/canvases/space/sections/heroSection/components/HeroWelcomeText.tsx:104
 msgid "Web and mobile products in TypeScript, React and three.js"
 msgstr "Produkty webowe i mobilne w TypeScript, React i three.js"
 

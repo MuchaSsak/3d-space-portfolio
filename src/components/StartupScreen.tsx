@@ -204,7 +204,7 @@ function StartupScreen() {
           Mateusz Muszarski
         </h1>
         <p className="text-sm text-foreground/60">
-          {t`Full-stack developer · 3D space portfolio`}
+          {t`Full-stack product engineer · 3D space portfolio`}
         </p>
       </header>
 

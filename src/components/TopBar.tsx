@@ -5,14 +5,12 @@ import CreditsDialogButton from "@/components/CreditsDialogButton";
 import GraphicsSettingButton from "@/components/GraphicsSettingButton";
 import { DownloadIcon, MailIcon } from "@/components/icons";
 import LanguageSettingButton from "@/components/LanguageSettingButton";
-import ResetSettingsDialogButton from "@/components/ResetSettingsDialogButton";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useScrollContext } from "@/contexts/ScrollContext";
 import { useSettingsContext } from "@/contexts/SettingsContext";
 import {
-  CONTACT_EMAIL,
   getResumeLink,
   getWebsiteLink,
   GITHUB_AVATAR_LINK,
@@ -53,18 +51,10 @@ function TopBar() {
               Mateusz Muszarski
             </span>
             <span className="text-xs text-muted-foreground max-sm:hidden">
-              {t`Full-stack developer`}
+              {t`Full-stack product engineer`}
             </span>
           </span>
           <span className="sr-only">{t`(main portfolio, opens in a new tab)`}</span>
-        </a>
-
-        {/* Contact email link */}
-        <a
-          className="text-muted-foreground text-sm hover:text-foreground transition-colors focus-visible:text-foreground hover:underline focus-visible:underline max-lg:hidden ml-2 rounded-sm outline-none"
-          href={`mailto:${CONTACT_EMAIL}`}
-        >
-          {CONTACT_EMAIL}
         </a>
       </div>
 
@@ -109,7 +99,6 @@ function TopBar() {
           buttonVariant="outline"
         />
         <CreditsDialogButton />
-        <ResetSettingsDialogButton />
       </div>
     </header>
   );

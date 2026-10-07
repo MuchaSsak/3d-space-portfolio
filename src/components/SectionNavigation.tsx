@@ -1,8 +1,9 @@
 import { useLingui } from "@lingui/react/macro";
 import gsap from "gsap";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { ChevronLeftIcon, ChevronRightIcon } from "@/components/icons";
+import ScrollHint from "@/components/ScrollHint";
 import { useProjectsCarousel } from "@/contexts/ProjectsCarouselContext";
 import { useScrollContext } from "@/contexts/ScrollContext";
 import { useSettingsContext } from "@/contexts/SettingsContext";
@@ -10,17 +11,21 @@ import { PROJECTS_LIST } from "@/lib/constants";
 import {
   AVAILABLE_SCROLLING_SECTIONS,
   getChapterOfScrollProgress,
+  MAX_SCROLL_PROGRESS,
   NAVIGATION_CHAPTERS,
   projectsListScrollProgress,
 } from "@/lib/sections";
 import { cn } from "@/lib/utils";
+
+const IDLE_HINT_DELAY_MS = 5000;
 
 /**
  * Bottom navigation: labeled chapters (one per planet) that jump straight to their section, plus the progress of every camera stop
  */
 function SectionNavigation() {
   const { t } = useLingui();
-  const { scrollProgress, goToScrollProgress } = useScrollContext();
+  const { scrollProgress, goToScrollProgress, isScrollingPaused } =
+    useScrollContext();
   const { hasStartedExperience } = useSettingsContext();
   const {
     activeProjectIndex,
@@ -33,6 +38,38 @@ function SectionNavigation() {
   const activeChapterIndex = NAVIGATION_CHAPTERS.indexOf(activeChapter);
   const isOnProjectsList = scrollProgress === projectsListScrollProgress;
   const activeProject = PROJECTS_LIST[activeProjectIndex];
+
+  // Remind how to move on whenever the visitor has been idle for a while
+  const [isIdle, setIsIdle] = useState(false);
+  useEffect(() => {
+    if (!hasStartedExperience) return;
+
+    let timeoutId: ReturnType<typeof setTimeout>;
+    const resetIdleTimer = (e?: Event) => {
+      if (e?.target instanceof Element && e.target.closest("[data-scroll-hint]"))
+        return;
+      setIsIdle(false);
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => setIsIdle(true), IDLE_HINT_DELAY_MS);
+    };
+
+    // Mouse movement alone doesn't count, so a lost visitor jiggling the cursor still gets the hint
+    const activityEvents = ["wheel", "keydown", "pointerdown", "touchstart"];
+    activityEvents.forEach((event) =>
+      window.addEventListener(event, resetIdleTimer, { passive: true })
+    );
+    resetIdleTimer();
+
+    return () => {
+      clearTimeout(timeoutId);
+      activityEvents.forEach((event) =>
+        window.removeEventListener(event, resetIdleTimer)
+      );
+    };
+    // Progressing (also via the navigation) counts as activity too
+  }, [hasStartedExperience, scrollProgress]);
+  const isScrollHintVisible =
+    isIdle && !isScrollingPaused && scrollProgress < MAX_SCROLL_PROGRESS;
 
   // Fade in on start experience
   useEffect(() => {
@@ -55,19 +92,8 @@ function SectionNavigation() {
       data-scroll-progress={scrollProgress}
       className="fixed invisible opacity-0 bottom-[max(0.5rem,env(safe-area-inset-bottom))] short:bottom-[max(0.25rem,env(safe-area-inset-bottom))] left-1/2 z-40 -translate-x-1/2 flex flex-col items-center gap-2 short:gap-1 max-w-[calc(100vw-0.5rem)]"
     >
-      {/* Scroll hint at the very beginning */}
-      <p
-        className={cn(
-          "tracking-widest text-xs uppercase select-none transition-opacity duration-500 text-foreground/80 [text-shadow:0_1px_6px_rgb(0_0_0/0.9)]",
-          scrollProgress > 0
-            ? "opacity-0"
-            : "opacity-100 [animation:pulse_5s_infinite]"
-        )}
-        aria-hidden
-      >
-        <span className="pointer-coarse:hidden">{t`Scroll or use the arrow keys`}</span>
-        <span className="hidden pointer-coarse:inline">{t`Swipe up`}</span>
-      </p>
+      {/* Scroll hint, shown while the visitor is idle */}
+      <ScrollHint isVisible={isScrollHintVisible} />
 
       {/* Projects carousel controls */}
       <div

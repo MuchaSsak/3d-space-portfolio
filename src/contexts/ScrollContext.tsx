@@ -202,7 +202,8 @@ export function ScrollContextProvider({
       const { scrollProgress } = progressRef.current;
       const interceptor = interceptorsRef.current.get(scrollProgress);
       if (interceptor?.(direction, { source, axis })) return true;
-      if (axis === "horizontal") return false;
+      // Left/right arrow keys move between sections too, sideways wheel and swipes are too easy to trigger by accident
+      if (axis === "horizontal" && source !== "keyboard") return false;
 
       const nextScrollProgress = scrollProgress + direction;
       if (

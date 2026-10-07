@@ -9,13 +9,10 @@ import {
 
 import SceneHtml from "@/canvases/components/SceneHtml";
 import useAnimateObjectVisibility from "@/canvases/hooks/useAnimateObjectVisibility";
-import { Button } from "@/components/ui/button";
 import { useScrollContext } from "@/contexts/ScrollContext";
 import {
-  contactFormScrollProgress,
   heroWelcomeTextCloseupScrollProgress,
   heroWelcomeTextScrollProgress,
-  projectsListScrollProgress,
 } from "@/lib/sections";
 
 const fontUrl = "/assets/fonts/Space_Grotesk_Bold_Title.json";
@@ -26,7 +23,7 @@ const matcapUrls = [
 
 function HeroWelcomeText() {
   const { t } = useLingui();
-  const { scrollProgress, goToScrollProgress } = useScrollContext();
+  const { scrollProgress } = useScrollContext();
   // Self-hosted copies of the matcaps (no runtime requests to third-party CDNs)
   const [matcapTextureSilver, matcapTextureGold] = useTexture(matcapUrls);
 
@@ -100,38 +97,12 @@ function HeroWelcomeText() {
             />
           </Text3D>
 
-          {/* Tagline and shortcuts, so visitors know right away who this is and where to go */}
+          {/* Visually hidden page heading, so screen readers still get who this is */}
           <SceneHtml position={[3.05, -1.25, -12.5]} isActive={isActive}>
-            <div
-              ref={register}
-              className="opacity-0 flex flex-col gap-4 w-max max-w-[34rem]"
-            >
-              <h1 className="flex flex-col gap-1 [text-shadow:0_2px_12px_rgb(0_0_0/0.65)]">
-                <span className="sr-only">Mateusz Muszarski — </span>
-                <span className="text-gold-gradient text-3xl font-bold leading-tight">
-                  {t`Full-stack developer`}
-                </span>
-                <span className="text-foreground/85 text-lg font-medium">
-                  {t`Web and mobile products in TypeScript, React and three.js`}
-                </span>
-              </h1>
-
-              <div className="flex flex-wrap gap-2">
-                <Button
-                  onClick={() => goToScrollProgress(projectsListScrollProgress)}
-                  className="bg-primary/85 hover:bg-primary border border-[color-mix(in_srgb,var(--primary)_70%,var(--foreground))]"
-                >
-                  {t`See my projects`}
-                </Button>
-                <Button
-                  variant="outline"
-                  onClick={() => goToScrollProgress(contactFormScrollProgress)}
-                  className="bg-background/40!"
-                >
-                  {t`Contact me`}
-                </Button>
-              </div>
-            </div>
+            <h1 className="sr-only">
+              Mateusz Muszarski — {t`Full-stack product engineer`}.{" "}
+              {t`Web and mobile products in TypeScript, React and three.js`}
+            </h1>
           </SceneHtml>
         </Billboard>
       </Float>

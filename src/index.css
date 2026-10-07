@@ -213,6 +213,56 @@
   }
 }
 
+/* Scroll hint */
+@keyframes scroll-wheel {
+  0% {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+
+  25% {
+    opacity: 1;
+  }
+
+  70%,
+  100% {
+    opacity: 0;
+    transform: translateY(7px);
+  }
+}
+
+@keyframes key-press {
+  0%,
+  25%,
+  100% {
+    transform: translateY(0);
+    background-color: color-mix(in srgb, var(--background) 40%, transparent);
+  }
+
+  8%,
+  17% {
+    transform: translateY(1px);
+    background-color: color-mix(in srgb, var(--foreground) 35%, transparent);
+  }
+}
+
+@keyframes swipe-up {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  75%,
+  100% {
+    opacity: 0;
+    transform: translateY(-1.25rem);
+  }
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *,
