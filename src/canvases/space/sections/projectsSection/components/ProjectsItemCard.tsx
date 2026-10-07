@@ -1,121 +1,162 @@
-import { t } from "@lingui/core/macro";
+import { useLingui } from "@lingui/react/macro";
 
-import { projectsListScrollProgress } from "@/canvases/space/components/CameraControls";
+import { ExternalLinkIcon } from "@/components/icons";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import type { ProjectData } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 type ProjectsItemCardProps = {
   projectData: ProjectData;
-  scrollProgress: number;
+  isFront: boolean;
+  onSelect: () => void;
+  onRequestContact: (subject: string) => void;
 };
 
 function ProjectsItemCard({
   projectData: {
     Title,
+    Kicker,
     Description,
-    Icons,
-    codeLink,
-    liveLink,
+    tags,
+    links,
+    Note,
     thumbnailImgUrl,
+    ThumbnailAlt,
   },
-  scrollProgress, // Retrieving scrollProgress as prop because the <Html /> component by Drei will portal this component out of ScrollContextProvider and therefore return invalid values
+  isFront,
+  onSelect,
+  onRequestContact,
 }: ProjectsItemCardProps) {
+  const { t } = useLingui();
+  const title = Title();
+  const primaryLiveLink = links.find(
+    (link) => link.variant === "primary" && link.href
+  )?.href;
+
   return (
-    <Card
-      className={cn(
-        "w-[36rem] [&:hover_img]:scale-110 gap-4 overflow-hidden bg-card/50 relative backdrop-blur-sm hover:[box-shadow:0_0_1rem_var(--primary),0_0_0.125rem_var(--foreground)] transition-[box-shadow] p-0",
-        scrollProgress !== projectsListScrollProgress
-          ? "pointer-events-none select-none"
-          : "pointer-events-auto",
-      )}
+    <article
+      aria-label={title}
+      className="relative w-[36rem] rounded-xl border bg-card/80 text-card-foreground backdrop-blur-sm overflow-hidden shadow-xl transition-[box-shadow,border-color] duration-300 hover:[box-shadow:0_0_1rem_var(--primary),0_0_0.125rem_var(--foreground)] has-[:focus-visible]:[box-shadow:0_0_1rem_var(--primary),0_0_0.125rem_var(--foreground)]"
     >
-      {/* Thumbnail image */}
-      <a
-        tabIndex={-1}
-        target="_blank"
-        href={liveLink}
-        className={cn(
-          "h-64 w-full overflow-hidden relative",
-          scrollProgress !== projectsListScrollProgress
-            ? "pointer-events-none"
-            : "pointer-events-auto",
-        )}
-      >
-        <img
-          src={thumbnailImgUrl}
-          className="h-64 w-full transition-transform absolute left-0 top-0 duration-300 object-cover"
-        />
-      </a>
-
-      <CardHeader>
-        {/* Icons */}
-        <ul className="flex items-center gap-3 pt-2">
-          <Icons />
-        </ul>
-
-        {/* Title */}
-        <CardTitle className="text-4xl max-w-[90%] pt-3">
-          <Title />
-        </CardTitle>
-      </CardHeader>
-
-      <CardContent>
-        {/* Description */}
-        <CardDescription className="text-xl text-card-foreground/80">
-          <Description />
-        </CardDescription>
-      </CardContent>
-
-      <CardFooter className="justify-between text-muted-foreground pb-6 pt-2">
-        {/* Soure code link button */}
-        {codeLink && (
+      <div inert={!isFront} className="flex flex-col">
+        {/* Thumbnail image */}
+        {primaryLiveLink ? (
           <a
-            href={codeLink}
             tabIndex={-1}
             target="_blank"
-            className={
-              scrollProgress !== projectsListScrollProgress
-                ? "pointer-events-none"
-                : "pointer-events-auto"
-            }
+            rel="noopener noreferrer"
+            href={primaryLiveLink}
+            className="h-64 w-full overflow-hidden relative block group/thumbnail"
+            aria-hidden
           >
-            <Button
-              variant="outline"
-              className="p-7 text-foreground rounded-xl text-xl"
-              tabIndex={-1}
-            >{t`Source code 💻`}</Button>
+            <img
+              src={thumbnailImgUrl}
+              alt=""
+              loading="lazy"
+              decoding="async"
+              className="h-64 w-full object-cover object-top transition-transform duration-300 group-hover/thumbnail:scale-105"
+            />
           </a>
+        ) : (
+          <img
+            src={thumbnailImgUrl}
+            alt={ThumbnailAlt()}
+            loading="lazy"
+            decoding="async"
+            className="h-64 w-full object-cover object-top"
+          />
         )}
 
-        {/* View it live link button */}
-        <a
-          href={liveLink}
-          tabIndex={-1}
-          target="_blank"
-          className={
-            scrollProgress !== projectsListScrollProgress
-              ? "pointer-events-none"
-              : "pointer-events-auto"
-          }
+        <div className="flex flex-col gap-3 px-6 pt-5 pb-6">
+          {/* Kicker */}
+          <p className="text-sm font-semibold uppercase tracking-wider text-[#ffea80]">
+            <Kicker />
+          </p>
+
+          {/* Title */}
+          <h3 className="text-4xl font-bold leading-tight">{title}</h3>
+
+          {/* Description */}
+          <p className="text-xl text-card-foreground/80 leading-snug">
+            <Description />
+          </p>
+
+          {/* Tech tags */}
+          <ul
+            className="flex flex-wrap items-center gap-2 pt-1"
+            aria-label={t`Built with`}
+          >
+            {tags.map(({ label, Icon }) => (
+              <li
+                key={label}
+                className="flex items-center gap-1.5 rounded-full border border-foreground/15 bg-foreground/5 px-3 py-1 text-sm font-medium"
+              >
+                {Icon && <Icon className="size-4" aria-hidden />}
+                {label}
+              </li>
+            ))}
+          </ul>
+
+          {/* Links */}
+          <div className="flex flex-wrap items-center justify-end gap-3 pt-3">
+            {Note && (
+              <p className="mr-auto text-sm text-muted-foreground">
+                <Note />
+              </p>
+            )}
+
+            {links.map(({ Label, href, variant }) => {
+              const label = Label();
+              const className = cn(
+                "h-auto px-6 py-3 rounded-xl text-lg",
+                variant === "primary"
+                  ? "bg-primary/70 hover:bg-primary border border-[color-mix(in_srgb,var(--primary)_80%,var(--foreground))]"
+                  : "text-foreground"
+              );
+
+              // Links without a URL lead to the contact form
+              if (!href)
+                return (
+                  <Button
+                    key={label}
+                    variant={variant === "primary" ? "default" : "outline"}
+                    className={className}
+                    onClick={() => onRequestContact(t`${title} walkthrough`)}
+                  >
+                    {label}
+                  </Button>
+                );
+
+              return (
+                <Button
+                  key={label}
+                  asChild
+                  variant={variant === "primary" ? "default" : "outline"}
+                  className={className}
+                >
+                  <a href={href} target="_blank" rel="noopener noreferrer">
+                    {label}
+                    <ExternalLinkIcon aria-hidden className="size-4!" />
+                    <span className="sr-only">{t`(opens in a new tab)`}</span>
+                  </a>
+                </Button>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      {/* Cards in the back bring themselves to the front when clicked */}
+      {!isFront && (
+        <button
+          type="button"
+          onClick={onSelect}
+          className="absolute inset-0 z-10 cursor-pointer outline-none focus-visible:ring-4 focus-visible:ring-primary/60 rounded-xl"
         >
-          <Button
-            className={
-              "p-7 bg-primary/60 border-[color-mix(in_srgb,var(--primary)_80%,var(--foreground))] border rounded-xl text-xl"
-            }
-            tabIndex={-1}
-          >{t`View it live 🚀`}</Button>
-        </a>
-      </CardFooter>
-    </Card>
+          <span className="sr-only">{t`Show project ${title}`}</span>
+        </button>
+      )}
+    </article>
   );
 }
 

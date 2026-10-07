@@ -1,6 +1,5 @@
-import { Environment } from "@react-three/drei";
-import { extend, useThree } from "@react-three/fiber";
-import { useMemo } from "react";
+import { extend, useFrame, useThree } from "@react-three/fiber";
+import { useMemo, useRef } from "react";
 import * as THREE from "three";
 
 import useStarsBufferPositions from "@/canvases/space/stars/hooks/useStarsBufferPositions";
@@ -25,36 +24,61 @@ declare module "@react-three/fiber" {
 }
 
 const starsCount = 5000;
+// Just inside the camera's far plane, so the stars are always behind everything else
+const skyDomeRadius = 2800;
 
+/**
+ * A dome of stars that follows the camera, so they look infinitely far away.
+ * (Rendering them into a 2048px half float cube map instead cost ~200 MB of video memory.)
+ */
 function StarsModel() {
-  // Define viewport resolution uniform
-  const { size } = useThree();
+  const skyDomeRef = useRef<THREE.Group>(null);
+  const size = useThree((state) => state.size);
+  const dpr = useThree((state) => state.viewport.dpr);
+
+  // Stars keep the same size relative to the screen height (in drawing buffer pixels)
   const uResolution = useMemo(
-    () => new THREE.Vector2(size.width, size.height),
-    [size]
+    () => new THREE.Vector2(size.width * dpr, size.height * dpr),
+    [size.width, size.height, dpr]
   );
 
   const bufferPositions = useStarsBufferPositions(starsCount);
   const bufferSizes = useStarsBufferSizes(starsCount);
 
-  return (
-    <Environment background resolution={2048}>
-      <points userData={{ lensflare: "no-occlusion" }}>
-        <bufferGeometry attach="geometry">
-          <bufferAttribute
-            attach="attributes-position"
-            args={[bufferPositions, 3]}
-          />
-          <bufferAttribute attach="attributes-aSize" args={[bufferSizes, 1]} />
-        </bufferGeometry>
+  useFrame(({ camera }) => {
+    skyDomeRef.current?.position.copy(camera.position);
+  });
 
-        <starsShaderMaterial
-          uResolution={uResolution}
-          depthWrite={false}
-          transparent
-        />
-      </points>
-    </Environment>
+  return (
+    <>
+      <color attach="background" args={["#09090b"]} />
+
+      <group ref={skyDomeRef}>
+        <points
+          userData={{ lensflare: "no-occlusion" }}
+          scale={skyDomeRadius}
+          renderOrder={-1}
+          frustumCulled={false}
+        >
+          <bufferGeometry>
+            <bufferAttribute
+              attach="attributes-position"
+              args={[bufferPositions, 3]}
+            />
+            <bufferAttribute
+              attach="attributes-aSize"
+              args={[bufferSizes, 1]}
+            />
+          </bufferGeometry>
+
+          <starsShaderMaterial
+            uResolution={uResolution}
+            depthWrite={false}
+            transparent
+          />
+        </points>
+      </group>
+    </>
   );
 }
 

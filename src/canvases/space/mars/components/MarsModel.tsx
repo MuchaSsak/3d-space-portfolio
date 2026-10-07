@@ -38,9 +38,9 @@ function MarsModel() {
   const marsBaseShaderMaterialRef = useRef(null);
   const marsAtmosphereShaderMaterialRef = useRef(null);
   const marsRef = useRef<THREE.Group>(null);
-  const { graphicsPresetValue } = useSettingsContext();
+  const { sphereSegments } = useSettingsContext();
 
-  const marsSphereSegments = graphicsPresetValue === "high" ? 64 : 16;
+  const marsSphereSegments = sphereSegments;
 
   // Load textures
   const [marsTexture] = useLoadMarsTextures();

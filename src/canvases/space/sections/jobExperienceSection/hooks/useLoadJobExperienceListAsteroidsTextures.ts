@@ -3,35 +3,31 @@ import { useMemo } from "react";
 import * as THREE from "three";
 
 import { useSettingsContext } from "@/contexts/SettingsContext";
+import { JOB_EXPERIENCE_LIST, type JobExperienceId } from "@/lib/constants";
+
+const jobExperienceIds = Object.keys(JOB_EXPERIENCE_LIST) as JobExperienceId[];
+const logoUrls = jobExperienceIds.map((id) => JOB_EXPERIENCE_LIST[id].logoImgSrc);
 
 function useLoadJobExperienceListAsteroidsTextures() {
   const { anisotropy } = useSettingsContext();
 
-  const loadedTextures = useTexture([
-    "/assets/textures/asteroids/beniaminek_logo.png",
-    "/assets/textures/asteroids/esc_logo.png",
-    "/assets/textures/asteroids/ruigrok_logo.png",
-  ]);
+  const loadedTextures = useTexture(logoUrls);
 
   const textures = useMemo(() => {
-    const [beniaminekTexture, escTexture, ruigrokTexture] = loadedTextures;
+    const texturesById = {} as Record<JobExperienceId, THREE.Texture>;
 
-    // Change colorSpace for diffuse textures
-    beniaminekTexture.colorSpace = THREE.SRGBColorSpace;
-    escTexture.colorSpace = THREE.SRGBColorSpace;
-    ruigrokTexture.colorSpace = THREE.SRGBColorSpace;
+    loadedTextures.forEach((texture, i) => {
+      // Change colorSpace for diffuse textures
+      texture.colorSpace = THREE.SRGBColorSpace;
+      // Change anisotropy according to the settings
+      texture.anisotropy = anisotropy;
+      // Update the texture
+      texture.needsUpdate = true;
 
-    // Change anisotropy according to the settings
-    beniaminekTexture.anisotropy = anisotropy;
-    escTexture.anisotropy = anisotropy;
-    ruigrokTexture.anisotropy = anisotropy;
+      texturesById[jobExperienceIds[i]] = texture;
+    });
 
-    // Update the textures
-    beniaminekTexture.needsUpdate = true;
-    escTexture.needsUpdate = true;
-    ruigrokTexture.needsUpdate = true;
-
-    return [beniaminekTexture, escTexture, ruigrokTexture];
+    return texturesById;
   }, [loadedTextures, anisotropy]);
 
   return textures;

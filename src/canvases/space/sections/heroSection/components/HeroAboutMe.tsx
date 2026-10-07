@@ -1,56 +1,60 @@
 import { useLingui } from "@lingui/react/macro";
-import { Html } from "@react-three/drei";
-import { useRef } from "react";
-import * as THREE from "three";
 
+import SceneHtml from "@/canvases/components/SceneHtml";
 import useAnimateObjectVisibility from "@/canvases/hooks/useAnimateObjectVisibility";
-import { heroAboutMeScrollProgress } from "@/canvases/space/components/CameraControls";
+import { useScrollContext } from "@/contexts/ScrollContext";
+import { heroAboutMeScrollProgress } from "@/lib/sections";
 
 function HeroAboutMe() {
   const { t } = useLingui();
+  const { scrollProgress } = useScrollContext();
 
-  const materialsToHideRefs = useRef<(THREE.Material | HTMLElement)[]>([]);
-  useAnimateObjectVisibility(materialsToHideRefs, [
-    heroAboutMeScrollProgress,
-    heroAboutMeScrollProgress,
-  ]);
+  const { register } = useAnimateObjectVisibility({
+    visibleRange: [heroAboutMeScrollProgress, heroAboutMeScrollProgress],
+  });
 
   return (
-    <group>
+    <SceneHtml
+      className="select-none pointer-events-none"
+      position={[1, 3, -16]}
+      isActive={scrollProgress === heroAboutMeScrollProgress}
+    >
       {/* Title */}
-      <Html className="select-none pointer-events-none" position={[1, 3, -16]}>
-        <h1
-          ref={(el) => {
-            materialsToHideRefs.current.push(el as HTMLHeadingElement);
-          }}
-          className="opacity-0 text-gold-gradient text-6xl font-bold pb-4"
-        >
-          {t`About me `}
-          <span className="font-emoji text-foreground">👋</span>
-        </h1>
+      <h2
+        ref={register}
+        className="opacity-0 text-gold-gradient text-6xl font-bold pb-4"
+      >
+        {t`About me `}
+        <span className="font-emoji text-foreground" aria-hidden>
+          👋
+        </span>
+      </h2>
 
-        {/* Description */}
-        <p
-          ref={(el) => {
-            materialsToHideRefs.current.push(el as HTMLParagraphElement);
-          }}
-          className="opacity-0 text-gold-gradient text-xl font-semibold w-sm flex flex-col gap-4"
-        >
-          <span>
-            {t`My name's Mateusz Muszarski and I'm passionate about programming as well as computer-science. Currently, I'm studying as programming technician in my technical college. `}
-            <span className="font-emoji text-foreground">🎓</span>
-          </span>
-          <span>
-            {t`My primary focus lies in full-stack and creative web development, however, I also learned the fundamentals in other digital areas such as 3D computer graphics, graphic design, photo or video editing. `}
-            <span className="font-emoji text-foreground">🎨</span>
-          </span>
-          <span>
-            {t`Beyond technology, I enjoy a range of other activites including working out, traveling, photography, swimming and many more! `}
-            <span className="font-emoji text-foreground">✨</span>
+      {/* Description */}
+      <div
+        ref={register}
+        className="opacity-0 text-gold-gradient text-xl font-semibold w-sm flex flex-col gap-4"
+      >
+        <p>
+          {t`I'm Mateusz Muszarski, a full-stack developer from Poland. Code is the tool: I build products that solve real business problems, at a cost that makes sense. `}
+          <span className="font-emoji text-foreground" aria-hidden>
+            🚀
           </span>
         </p>
-      </Html>
-    </group>
+        <p>
+          {t`I build web and mobile apps end to end in TypeScript, React, Next.js, React Native and Supabase, and I shipped my own app solo to the App Store and Google Play. `}
+          <span className="font-emoji text-foreground" aria-hidden>
+            📱
+          </span>
+        </p>
+        <p>
+          {t`Beyond code, I enjoy calisthenics, travelling, motorcycles, films and gaming with friends! `}
+          <span className="font-emoji text-foreground" aria-hidden>
+            ✨
+          </span>
+        </p>
+      </div>
+    </SceneHtml>
   );
 }
 

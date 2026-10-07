@@ -1,41 +1,22 @@
 import { useMemo } from "react";
 import * as THREE from "three";
 
+// Random, evenly distributed points on a unit sphere (computed once, so the stars never jump around on re-renders)
 function useStarsBufferPositions(starsCount: number) {
-  const sphericalPositions = useMemo(() => {
-    const sphericalPositions = [];
+  return useMemo(() => {
+    const bufferPositions = new Float32Array(starsCount * 3);
+    const spherical = new THREE.Spherical(1);
+    const starPosition = new THREE.Vector3();
 
-    // Insert random phi and theta to sphericalPositions
     for (let i = 0; i < starsCount; i++) {
-      const randomHeight = Math.random();
-      const randomRotation = Math.random();
-
-      const phi = Math.acos(1 - 2 * randomHeight);
-      const theta = 2 * Math.PI * randomRotation;
-
-      sphericalPositions.push(new THREE.Spherical(1, phi, theta));
+      spherical.phi = Math.acos(1 - 2 * Math.random());
+      spherical.theta = 2 * Math.PI * Math.random();
+      starPosition.setFromSpherical(spherical);
+      starPosition.toArray(bufferPositions, i * 3);
     }
 
-    return sphericalPositions;
+    return bufferPositions;
   }, [starsCount]);
-
-  const starsPositions = sphericalPositions.map(() => new THREE.Vector3());
-  // Set starsPositions from sphericalPositions
-  for (let i = 0; i < starsCount; i++) {
-    starsPositions[i].setFromSpherical(sphericalPositions[i]);
-  }
-
-  const bufferPositions = [];
-  // Make a flat array of those positions
-  for (let i = 0; i < starsCount; i++) {
-    bufferPositions.push(
-      starsPositions[i].x,
-      starsPositions[i].y,
-      starsPositions[i].z
-    );
-  }
-
-  return new Float32Array(bufferPositions);
 }
 
 export default useStarsBufferPositions;

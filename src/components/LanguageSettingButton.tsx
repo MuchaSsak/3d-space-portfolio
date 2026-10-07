@@ -23,6 +23,9 @@ function LanguageSettingButton({
 }: LanguageSettingButtonProps) {
   const { t } = useLingui();
   const { language, setLanguage } = useLanguage();
+  const currentLanguage = AVAILABLE_LANGUAGES.find(
+    (availableLanguage) => availableLanguage.value === language
+  )!;
 
   return (
     <Combobox
@@ -36,16 +39,15 @@ function LanguageSettingButton({
     >
       <Button
         variant={buttonVariant}
-        role="combobox"
         size="icon"
         className={cn("font-emoji", buttonClassName)}
         tabIndex={tabIndex}
+        aria-label={buttonText ? undefined : t`Language: ${currentLanguage.label}`}
+        title={buttonText ? undefined : t`Language`}
       >
-        {
-          AVAILABLE_LANGUAGES.find(
-            (availableLanguage) => availableLanguage.value === language
-          )!.Icon
-        }
+        <span aria-hidden className="font-emoji">
+          {currentLanguage.Icon}
+        </span>
         {buttonText && <span>{buttonText}</span>}
       </Button>
     </Combobox>

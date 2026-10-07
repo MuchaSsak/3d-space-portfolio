@@ -16,7 +16,7 @@ import { useSettingsContext } from "@/contexts/SettingsContext";
 
 function ResetSettingsDialogButton() {
   const { t } = useLingui();
-  const { dispatch, hasStartedExperience } = useSettingsContext();
+  const { dispatch } = useSettingsContext();
 
   function handleResetSettings() {
     dispatch({ type: "state/reset" });
@@ -27,16 +27,19 @@ function ResetSettingsDialogButton() {
     <AlertDialog>
       <AlertDialogTrigger asChild>
         <Button
-          tabIndex={!hasStartedExperience ? -1 : undefined}
           variant="outline"
           size="icon"
           className="size-8"
+          aria-label={t`Reset all settings`}
+          title={t`Reset all settings`}
         >
-          💾
+          <span aria-hidden className="font-emoji">
+            💾
+          </span>
         </Button>
       </AlertDialogTrigger>
 
-      <AlertDialogContent className="z-[500000001]">
+      <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>
             {t`Do you want to reset all settings?`}

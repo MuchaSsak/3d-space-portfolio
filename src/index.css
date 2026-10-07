@@ -47,6 +47,9 @@
   --sidebar-ring: oklch(0.541 0.281 293.009);
 }
 
+/* Short screens, e.g. phones in landscape */
+@custom-variant short (@media (max-height: 560px));
+
 @theme inline {
   --breakpoint-xs: 30rem;
 
@@ -100,11 +103,41 @@
 
   html,
   body {
-    @apply m-0 p-0 w-screen h-screen bg-background text-foreground overflow-hidden;
+    @apply m-0 p-0 w-full h-full bg-background text-foreground overflow-hidden;
+    /* clip (unlike hidden) can't be scrolled programmatically, e.g. when focusing content placed off-screen */
+    overflow: clip;
+    /* No pull-to-refresh / rubber band scrolling, the experience handles swipes itself */
+    overscroll-behavior: none;
+  }
+
+  body {
+    /* Swipes are handled by the experience (no native panning), pinch zoom stays available */
+    touch-action: pinch-zoom;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Lists and text areas with their own scrollbar keep native touch scrolling */
+  [data-scroll-area] {
+    touch-action: pan-y pinch-zoom;
+  }
+
+  #root {
+    @apply w-full h-dvh overflow-clip;
   }
 
   canvas {
-    @apply w-screen h-screen;
+    @apply w-full h-full;
+    /* One finger swipes navigate the experience, two finger pinch still zooms */
+    touch-action: pinch-zoom;
+  }
+
+  /* iOS zooms into inputs with a font smaller than 16px */
+  @media (pointer: coarse) {
+    input,
+    textarea,
+    select {
+      font-size: max(16px, 1em) !important;
+    }
   }
 
   button {
@@ -149,6 +182,16 @@
   @apply text-transparent bg-gradient-to-r bg-clip-text from-[#3048ff] via-[#3f5fff] to-[#1f2cdd];
 }
 
+/* Content anchored in the 3D scene scales together with the scene (set in JS, see useResponsiveCamera) */
+@utility scene-scaled {
+  zoom: var(--scene-scale, 1);
+}
+
+/* The startup control panel image always fits the screen */
+@utility startup-panel {
+  transform: scale(var(--startup-scale, 1));
+}
+
 @utility scrollbar-hidden {
   @apply [scrollbar-width:none] [&::-webkit-scrollbar]:hidden;
 }
@@ -170,13 +213,28 @@
   }
 }
 
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 /* Fonts */
 @font-face {
   font-family: "Space Grotesk";
-  src: url("/assets/fonts/Space_Grotesk.ttf");
+  src: url("/assets/fonts/Space_Grotesk.woff2") format("woff2");
+  font-weight: 300 700;
+  font-display: swap;
 }
 
+/* Subset of the emoji font with only the emojis used on the site (the full font is 24 MB) */
 @font-face {
   font-family: "Noto Color Emoji";
-  src: url("/assets/fonts/Noto_Color_Emoji_Regular.ttf");
+  src: url("/assets/fonts/Noto_Color_Emoji_Subset.woff2") format("woff2");
+  font-display: swap;
 }

@@ -1,7 +1,7 @@
-import { folder, useControls } from "leva";
 import * as THREE from "three";
 
 import { useSpaceContext } from "@/canvases/space/contexts/SpaceContext";
+import { folder, useDebugControls as useControls } from "@/lib/debug";
 
 function useEarthDebugControls() {
   const {

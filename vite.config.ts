@@ -16,7 +16,6 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          leva: ["leva"],
           three: ["three"],
           gsap: ["gsap"],
           "@react-three/fiber": ["@react-three/fiber"],

@@ -1,13 +1,12 @@
 import { useAnimations } from "@react-three/drei";
-import type { ObjectMap } from "@react-three/fiber";
-import type { GLTF } from "node_modules/three-stdlib/loaders/GLTFLoader";
 import { useEffect } from "react";
+import type * as THREE from "three";
 
 function useAsteroidsAnimation(
-  asteroidsModel: GLTF & ObjectMap,
+  animations: THREE.AnimationClip[],
   animationSpeed = 0.075
 ) {
-  const { ref, actions } = useAnimations(asteroidsModel.animations);
+  const { ref, actions } = useAnimations(animations);
 
   useEffect(() => {
     const rotateAnimation = actions?.["Take 001"];
@@ -15,6 +14,10 @@ function useAsteroidsAnimation(
 
     rotateAnimation.play();
     rotateAnimation.timeScale = animationSpeed;
+
+    return () => {
+      rotateAnimation.stop();
+    };
   }, [actions, animationSpeed]);
 
   return ref;

@@ -1,4 +1,5 @@
 import { useLingui } from "@lingui/react/macro";
+import { useId } from "react";
 
 import { type AvailableButtonVariants, Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -28,6 +29,7 @@ function AudioSettingButton({
 }: AudioSettingButtonProps) {
   const { t } = useLingui();
   const { dispatch, isAudioEnabled, audioVolume } = useSettingsContext();
+  const idSuffix = useId();
 
   function handleSetIsAudioEnabled() {
     dispatch({ type: "settings/setIsAudioEnabled", payload: !isAudioEnabled });
@@ -47,31 +49,35 @@ function AudioSettingButton({
           tabIndex={tabIndex}
           variant={buttonVariant}
           className={buttonClassName}
+          aria-label={buttonText ? undefined : t`Audio settings`}
+          title={buttonText ? undefined : t`Audio settings`}
         >
-          {(!isAudioEnabled || audioVolume === 0) && "🔇"}
-          {isAudioEnabled && audioVolume > 0 && audioVolume < 0.5 && "🔉"}
-          {isAudioEnabled && audioVolume >= 0.5 && "🔊"}
+          <span aria-hidden className="font-emoji">
+            {(!isAudioEnabled || audioVolume === 0) && "🔇"}
+            {isAudioEnabled && audioVolume > 0 && audioVolume < 0.5 && "🔉"}
+            {isAudioEnabled && audioVolume >= 0.5 && "🔊"}
+          </span>
           {buttonText && <span>{buttonText}</span>}
         </Button>
       </PopoverTrigger>
 
       <PopoverContent sideOffset={sideOffset} className="text-sm">
         {/* Label */}
-        <h6 className="text-muted-foreground text-xs">{t`Audio settings`}</h6>
+        <p className="text-muted-foreground text-xs">{t`Audio settings`}</p>
 
         {/* Enable sounds checkbox */}
         <div className="flex items-center gap-2 py-2">
           <Checkbox
             checked={isAudioEnabled}
-            onClick={handleSetIsAudioEnabled}
-            id="enable-sounds-checkbox"
+            onCheckedChange={handleSetIsAudioEnabled}
+            id={`enable-sounds-checkbox${idSuffix}`}
           />
-          <label htmlFor="enable-sounds-checkbox">{t`Enable sounds`}</label>
+          <label htmlFor={`enable-sounds-checkbox${idSuffix}`}>{t`Enable sounds`}</label>
         </div>
 
         {/* Volume slider */}
-        <span>
-          {t`Volume`} <span>🔊</span>
+        <span id={`volume-label${idSuffix}`}>
+          {t`Volume`} <span aria-hidden className="font-emoji">🔊</span>
         </span>
         <div className="flex items-center gap-2">
           <span
@@ -84,7 +90,8 @@ function AudioSettingButton({
           </span>
           <Slider
             onValueChange={([newValue]) => handleSetAudioVolume(newValue)}
-            defaultValue={[audioVolume]}
+            value={[audioVolume]}
+            thumbAriaLabel={t`Volume`}
             min={0}
             step={0.01}
             max={1}

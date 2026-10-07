@@ -34,8 +34,12 @@ function GraphicsSettingButton({
   tabIndex,
 }: GraphicsSettingButtonProps) {
   const { t } = useLingui();
-  const { graphicsPresetValue, graphicsPresetIcon, dispatch } =
-    useSettingsContext();
+  const {
+    graphicsPresetValue,
+    graphicsPresetIcon,
+    GraphicsPresetLabel,
+    dispatch,
+  } = useSettingsContext();
 
   function handleSetGraphicsSettings(newValue: string) {
     dispatch({
@@ -46,10 +50,12 @@ function GraphicsSettingButton({
   }
 
   return (
-    <Select onValueChange={handleSetGraphicsSettings}>
+    <Select value={graphicsPresetValue} onValueChange={handleSetGraphicsSettings}>
       <SelectTrigger
         iconClassName="hidden"
         tabIndex={tabIndex}
+        aria-label={buttonText ? undefined : t`Graphics: ${String(GraphicsPresetLabel())}`}
+        title={buttonText ? undefined : t`Graphics settings`}
         className={cn(
           buttonVariants({
             variant: buttonVariant,
@@ -58,14 +64,18 @@ function GraphicsSettingButton({
           })
         )}
       >
-        {graphicsPresetIcon}
+        <span aria-hidden className="font-emoji">{graphicsPresetIcon}</span>
         {buttonText && <span>{buttonText}</span>}
       </SelectTrigger>
       <SelectContent sideOffset={sideOffset} align="center">
         <SelectGroup>
           <SelectLabel>{t`Graphics settings`}</SelectLabel>
 
-          {Object.keys(AVAILABLE_GRAPHICS_SETTINGS).map((graphicsPreset) => {
+          {(
+            Object.keys(
+              AVAILABLE_GRAPHICS_SETTINGS
+            ) as (keyof typeof AVAILABLE_GRAPHICS_SETTINGS)[]
+          ).map((graphicsPreset) => {
             const GraphicsPresetLabel =
               AVAILABLE_GRAPHICS_SETTINGS[graphicsPreset].GraphicsPresetLabel;
 
@@ -87,7 +97,9 @@ function GraphicsSettingButton({
                 }`}
               >
                 <GraphicsPresetLabel />{" "}
-                {AVAILABLE_GRAPHICS_SETTINGS[graphicsPreset].graphicsPresetIcon}
+                <span aria-hidden className="font-emoji">
+                  {AVAILABLE_GRAPHICS_SETTINGS[graphicsPreset].graphicsPresetIcon}
+                </span>
               </SelectItem>
             );
           })}

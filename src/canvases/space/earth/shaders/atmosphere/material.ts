@@ -1,14 +1,15 @@
 import { shaderMaterial } from "@react-three/drei";
+import * as THREE from "three";
 
 import earthAtmosphereFragmentShader from "@/canvases/space/earth/shaders/atmosphere/fragment";
 import earthAtmosphereVertexShader from "@/canvases/space/earth/shaders/atmosphere/vertex";
 
 const EarthAtmosphereShaderMaterial = shaderMaterial(
   {
-    uEarthDirection: null,
+    uEarthDirection: new THREE.Vector3(),
 
-    uEarthAtmosphereDayColor: null,
-    uEarthAtmosphereTwilightColor: null,
+    uEarthAtmosphereDayColor: new THREE.Color(),
+    uEarthAtmosphereTwilightColor: new THREE.Color(),
   },
   earthAtmosphereVertexShader,
   earthAtmosphereFragmentShader

@@ -1,37 +1,34 @@
 import { useLingui } from "@lingui/react/macro";
-import { Html } from "@react-three/drei";
-import { useRef } from "react";
-import * as THREE from "three";
 
+import SceneHtml from "@/canvases/components/SceneHtml";
 import useAnimateObjectVisibility from "@/canvases/hooks/useAnimateObjectVisibility";
-import { projectsTitleScrollProgress } from "@/canvases/space/components/CameraControls";
+import { useScrollContext } from "@/contexts/ScrollContext";
+import { projectsTitleScrollProgress } from "@/lib/sections";
 
 function ProjectsTitle() {
   const { t } = useLingui();
+  const { scrollProgress } = useScrollContext();
 
   // Hide text when the current section viewed is not appriopriate for it to appear
-  const materialsToHideRefs = useRef<(THREE.Material | HTMLElement)[]>([]);
-  useAnimateObjectVisibility(materialsToHideRefs, [
-    projectsTitleScrollProgress,
-    projectsTitleScrollProgress,
-  ]);
+  const { register } = useAnimateObjectVisibility({
+    visibleRange: [projectsTitleScrollProgress, projectsTitleScrollProgress],
+  });
 
   return (
-    <Html
+    <SceneHtml
       className="select-none pointer-events-none"
       center
       position={[-743, -18, 1400]}
+      isActive={scrollProgress === projectsTitleScrollProgress}
     >
       {/* Title */}
-      <h3
-        ref={(el) => {
-          materialsToHideRefs.current.push(el as HTMLHeadingElement);
-        }}
-        className="w-max text-yellow-gradient text-center opacity-0 text-8xl flex items-center gap-2 font-bold"
+      <h2
+        ref={register}
+        className="w-max text-yellow-gradient text-center opacity-0 text-8xl flex items-center gap-2 font-bold pb-2"
       >
         <span>{t`Projects`}</span>
-      </h3>
-    </Html>
+      </h2>
+    </SceneHtml>
   );
 }
 

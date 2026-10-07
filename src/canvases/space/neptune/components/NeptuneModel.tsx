@@ -38,9 +38,9 @@ function NeptuneModel() {
   const neptuneBaseShaderMaterialRef = useRef(null);
   const neptuneAtmosphereShaderMaterialRef = useRef(null);
   const neptuneRef = useRef<THREE.Group>(null);
-  const { graphicsPresetValue } = useSettingsContext();
+  const { sphereSegments } = useSettingsContext();
 
-  const neptuneSphereSegments = graphicsPresetValue === "high" ? 64 : 16;
+  const neptuneSphereSegments = sphereSegments;
 
   // Load textures
   const [neptuneTexture] = useLoadNeptuneTextures();

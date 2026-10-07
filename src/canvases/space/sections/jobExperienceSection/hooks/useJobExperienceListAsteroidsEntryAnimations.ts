@@ -3,88 +3,44 @@ import { useEffect } from "react";
 import * as THREE from "three";
 
 import { useScrollContext } from "@/contexts/ScrollContext";
+import { jobExperienceListScrollProgress } from "@/lib/sections";
 
-function useJobExperienceListAsteroidsEntryAnimations({
-  beniaminekAsteroidRef,
-  escAsteroidRef,
-  ruigrokAsteroidRef,
-}: {
-  beniaminekAsteroidRef: React.RefObject<THREE.Group<THREE.Object3DEventMap>>;
-  escAsteroidRef: React.RefObject<THREE.Group<THREE.Object3DEventMap>>;
-  ruigrokAsteroidRef: React.RefObject<THREE.Group<THREE.Object3DEventMap>>;
-}) {
+export type AsteroidEntryAnimation = {
+  ref: React.RefObject<THREE.Group | null>;
+  // Position while the job experience list is shown
+  inPosition: [number, number, number];
+  // Position outside of the list (the asteroids fly away)
+  outPosition: [number, number, number];
+  outEase?: string;
+};
+
+// Animate position in and out of the asteroids
+function useJobExperienceListAsteroidsEntryAnimations(
+  asteroids: AsteroidEntryAnimation[],
+  // The asteroids are mounted lazily, the animation has to start once they exist
+  isRendered: boolean
+) {
   const { scrollProgress } = useScrollContext();
+  const isListShown = scrollProgress === jobExperienceListScrollProgress;
 
   useEffect(() => {
-    if (
-      !beniaminekAsteroidRef.current ||
-      !escAsteroidRef.current ||
-      !ruigrokAsteroidRef.current
-    )
-      return;
+    const tweens = asteroids.map(({ ref, inPosition, outPosition, outEase }) => {
+      if (!ref.current) return null;
+      const [x, y, z] = isListShown ? inPosition : outPosition;
 
-    // scrollProgress of 5 === Mars work experience list (scene #6)
-    if (scrollProgress === 5) {
-      // Beniaminek
-      gsap.to(beniaminekAsteroidRef.current.position, {
-        ease: "sine.out",
-        x: 13,
-        y: 1,
-        z: -90,
+      return gsap.to(ref.current.position, {
+        ease: isListShown ? "sine.out" : (outEase ?? "sine.out"),
+        x,
+        y,
+        z,
         duration: 3,
       });
+    });
 
-      // ESC
-      gsap.to(escAsteroidRef.current.position, {
-        ease: "sine.out",
-        x: 9.95,
-        y: 2.75,
-        z: -90,
-        duration: 3,
-      });
-
-      // ruigrok
-      gsap.to(ruigrokAsteroidRef.current.position, {
-        ease: "sine.out",
-        x: 6,
-        y: 0.8,
-        z: -90,
-        duration: 3,
-      });
-    } else {
-      // Beniaminek
-      gsap.to(beniaminekAsteroidRef.current.position, {
-        ease: "sine.in",
-        x: 25,
-        y: 0,
-        z: -80,
-        duration: 3,
-      });
-
-      // ESC
-      gsap.to(escAsteroidRef.current.position, {
-        ease: "sine.out",
-        x: 9.95,
-        y: 10,
-        z: -80,
-        duration: 3,
-      });
-
-      // ruigrok
-      gsap.to(ruigrokAsteroidRef.current.position, {
-        ease: "sine.out",
-        x: -15,
-        y: 0,
-        z: -80,
-        duration: 3,
-      });
-    }
-  }, [
-    scrollProgress,
-    beniaminekAsteroidRef,
-    escAsteroidRef,
-    ruigrokAsteroidRef,
-  ]);
+    return () => {
+      tweens.forEach((tween) => tween?.kill());
+    };
+  }, [isListShown, asteroids, isRendered]);
 }
 
 export default useJobExperienceListAsteroidsEntryAnimations;

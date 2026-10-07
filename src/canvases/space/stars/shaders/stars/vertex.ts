@@ -11,7 +11,8 @@ void main() {
    gl_Position = projectedPosition;
    
    // Point size
-   float size = 0.005;
+   // Tuned to match the look of the stars when they were baked into a cube map
+   float size = 0.007;
    gl_PointSize = size * aSize * uResolution.y;
 }
 `;

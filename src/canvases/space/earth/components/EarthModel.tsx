@@ -48,9 +48,9 @@ function EarthModel() {
   const earthCloudsShaderMaterialRef = useRef(null);
   const earthRef = useRef<THREE.Group>(null);
   const earthCloudsRef = useRef<THREE.Mesh>(null);
-  const { graphicsPresetValue } = useSettingsContext();
+  const { sphereSegments } = useSettingsContext();
 
-  const earthSphereSegments = graphicsPresetValue === "high" ? 64 : 16;
+  const earthSphereSegments = sphereSegments;
 
   // Load textures
   const [earthDayTexture, earthNightTexture, earthSpecularCloudsTexture] =

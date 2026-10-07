@@ -1,6 +1,6 @@
-import { certificatesListScrollProgress } from "@/canvases/space/components/CameraControls";
+import { useLingui } from "@lingui/react/macro";
+
 import { Card, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { useScrollContext } from "@/contexts/ScrollContext";
 import type { CertificateData } from "@/lib/constants";
 
 type CertificatesItemCardProps = {
@@ -8,48 +8,45 @@ type CertificatesItemCardProps = {
 };
 
 function CertificatesItemCard({
-  certificateData: {
-    Title,
-    EndedDate,
-    StartedDate,
-    authorName,
-    websiteLink,
-    Icon,
-  },
+  certificateData: { Title, Period, authorName, websiteLink, Icon },
 }: CertificatesItemCardProps) {
-  const { scrollProgress } = useScrollContext();
+  const { t } = useLingui();
 
   return (
-    <Card className="w-[26rem] z-10 relative bg-card/50 gap-2 backdrop-blur-sm hover:[box-shadow:0_0_0.5rem_#FFFC54] transition-[box-shadow]">
-      <CardHeader>
-        <CardTitle className="text-2xl max-w-[90%]">
-          <Title />
-        </CardTitle>
+    <li>
+      <Card className="w-[26rem] short:w-[22rem] max-w-full z-10 relative bg-card/70 gap-2 short:py-4 short:gap-1 backdrop-blur-sm hover:[box-shadow:0_0_0.5rem_#FFFC54] transition-[box-shadow]">
+        <CardHeader>
+          <CardTitle className="text-2xl short:text-lg max-w-[88%] leading-tight">
+            <h3>
+              <Title />
+            </h3>
+          </CardTitle>
 
-        <div className="absolute top-4 right-4 text-2xl size-8">
-          <Icon />
-        </div>
-      </CardHeader>
+          <div
+            className="absolute top-4 right-4 text-2xl short:text-lg size-8 short:size-6 grid place-items-center [&_svg]:size-8 short:[&_svg]:size-6"
+            aria-hidden
+          >
+            <Icon />
+          </div>
+        </CardHeader>
 
-      <CardFooter className="justify-between text-muted-foreground">
-        <a
-          className="hover:text-[#FFFC54] transition-colors hover:underline focus-visible:underline focus-visible:text-[#FFFC54]"
-          href={websiteLink}
-          target="_blank"
-          tabIndex={
-            scrollProgress !== certificatesListScrollProgress ? -1 : undefined
-          }
-        >
-          {authorName}
-        </a>
+        <CardFooter className="justify-between gap-x-4 text-muted-foreground flex-wrap short:text-sm">
+          <a
+            className="hover:text-[#FFFC54] transition-colors hover:underline focus-visible:underline focus-visible:text-[#FFFC54] rounded-sm outline-none focus-visible:ring-[3px] focus-visible:ring-[#FFFC54]/40"
+            href={websiteLink}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {authorName}
+            <span className="sr-only"> {t`(opens in a new tab)`}</span>
+          </a>
 
-        <span>
-          <StartedDate />
-          {" - "}
-          <EndedDate />
-        </span>
-      </CardFooter>
-    </Card>
+          <span>
+            <Period />
+          </span>
+        </CardFooter>
+      </Card>
+    </li>
   );
 }
 

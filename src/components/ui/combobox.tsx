@@ -1,8 +1,8 @@
 import { useLingui } from "@lingui/react/macro";
 import type { PopoverContentProps } from "@radix-ui/react-popover";
-import { CheckIcon } from "@/components/icons";
 import { useState } from "react";
 
+import { CheckIcon } from "@/components/icons";
 import {
   Command,
   CommandEmpty,

@@ -1,5 +1,6 @@
-import { folder, useControls } from "leva";
 import * as THREE from "three";
+
+import { folder, useDebugControls as useControls } from "@/lib/debug";
 
 function useLensFlareDebugControls() {
   const controls = useControls(
@@ -23,7 +24,6 @@ function useLensFlareDebugControls() {
       animated: { value: true, label: "animated?" },
       followMouse: { value: false, label: "followMouse?" },
       anamorphic: { value: false, label: "anamorphic?" },
-      // @ts-expect-error I must use a THREE.Color uniform because I'm passing the values to <LensFlare /> by @andersonmancini. Leva works fine this way too so it's alright
       colorGain: { value: new THREE.Color(56, 22, 11), label: "colorGain" },
 
       Flare: folder({

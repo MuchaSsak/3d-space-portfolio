@@ -1,17 +1,15 @@
 import { useMemo } from "react";
 
 function useStarsBufferSizes(starsCount: number) {
-  const bufferSizes = useMemo(() => {
-    const bufferSizes = [];
+  return useMemo(() => {
+    const bufferSizes = new Float32Array(starsCount);
 
     for (let i = 0; i < starsCount; i++) {
-      bufferSizes.push(Math.random() + 0.5);
+      bufferSizes[i] = Math.random() + 0.5;
     }
 
     return bufferSizes;
   }, [starsCount]);
-
-  return new Float32Array(bufferSizes);
 }
 
 export default useStarsBufferSizes;

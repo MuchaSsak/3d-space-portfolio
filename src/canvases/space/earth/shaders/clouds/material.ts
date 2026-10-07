@@ -1,24 +1,25 @@
 import { shaderMaterial } from "@react-three/drei";
+import * as THREE from "three";
 
 import earthCloudsFragmentShader from "@/canvases/space/earth/shaders/clouds/fragment";
 import earthCloudsVertexShader from "@/canvases/space/earth/shaders/clouds/vertex";
 
 const EarthCloudsShaderMaterial = shaderMaterial(
   {
-    uEarthDirection: null,
+    uEarthDirection: new THREE.Vector3(),
 
     uEarthSpecularCloudsTexture: null,
 
-    uEarthCloudsAmount: null,
-    uEarthCloudsDayAlpha: null,
-    uEarthCloudsNightAlpha: null,
+    uEarthCloudsAmount: 0,
+    uEarthCloudsDayAlpha: 0,
+    uEarthCloudsNightAlpha: 0,
 
-    uEarthAtmosphereDayColor: null,
-    uEarthAtmosphereTwilightColor: null,
+    uEarthAtmosphereDayColor: new THREE.Color(),
+    uEarthAtmosphereTwilightColor: new THREE.Color(),
 
-    uEarthSpecularIntensity: null,
-    uEarthSpecularOpacity: null,
-    uEarthSpecularColor: null,
+    uEarthSpecularIntensity: 0,
+    uEarthSpecularOpacity: 0,
+    uEarthSpecularColor: new THREE.Color(),
   },
   earthCloudsVertexShader,
   earthCloudsFragmentShader

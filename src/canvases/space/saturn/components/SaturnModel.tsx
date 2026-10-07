@@ -49,9 +49,9 @@ function SaturnModel() {
   const saturnRingShaderMaterialRef = useRef(null);
   const saturnRef = useRef<THREE.Group>(null);
   const saturnRingGeometry = useSaturnRingGeometry();
-  const { graphicsPresetValue } = useSettingsContext();
+  const { sphereSegments } = useSettingsContext();
 
-  const saturnSphereSegments = graphicsPresetValue === "high" ? 64 : 16;
+  const saturnSphereSegments = sphereSegments;
 
   // Load textures
   const [saturnTexture, saturnRingTexture] = useLoadSaturnTextures();

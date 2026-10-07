@@ -1,6 +1,6 @@
 import { Command as CommandPrimitive } from "cmdk";
-import { SearchIcon } from "@/components/icons";
 
+import { SearchIcon } from "@/components/icons";
 import {
   Dialog,
   DialogContent,

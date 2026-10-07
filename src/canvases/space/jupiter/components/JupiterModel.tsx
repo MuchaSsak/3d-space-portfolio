@@ -38,9 +38,9 @@ function JupiterModel() {
   const jupiterBaseShaderMaterialRef = useRef(null);
   const jupiterAtmosphereShaderMaterialRef = useRef(null);
   const jupiterRef = useRef<THREE.Group>(null);
-  const { graphicsPresetValue } = useSettingsContext();
+  const { sphereSegments } = useSettingsContext();
 
-  const jupiterSphereSegments = graphicsPresetValue === "high" ? 64 : 16;
+  const jupiterSphereSegments = sphereSegments;
 
   // Load textures
   const [jupiterTexture] = useLoadJupiterTextures();

@@ -3,6 +3,9 @@ import gsap from "gsap";
 import { useEffect, useState } from "react";
 
 import { useSettingsContext } from "@/contexts/SettingsContext";
+import usePrefersReducedMotion from "@/hooks/usePrefersReducedMotion";
+
+const staticDocumentTitle = "Mateusz Muszarski | 3D Space Portfolio";
 
 type TitleStatus = "loading" | "ready" | "active";
 
@@ -10,6 +13,7 @@ function AnimateDocumentTitle() {
   const { t } = useLingui();
   const [titleStatus, setTitleStatus] = useState<TitleStatus>("loading");
   const { hasLoaded, hasStartedExperience } = useSettingsContext();
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   // Update title status
   useEffect(() => {
@@ -19,6 +23,12 @@ function AnimateDocumentTitle() {
 
   // Update document title
   useEffect(() => {
+    // An animated title is distracting for people who prefer reduced motion
+    if (prefersReducedMotion) {
+      document.title = staticDocumentTitle;
+      return;
+    }
+
     let loadingTimeline: gsap.core.Tween;
     let readyTimeline: gsap.core.Tween;
     let activeTimeline: gsap.core.Tween;
@@ -108,7 +118,7 @@ function AnimateDocumentTitle() {
       readyTimeline?.kill();
       activeTimeline?.kill();
     };
-  }, [titleStatus, t]);
+  }, [titleStatus, t, prefersReducedMotion]);
 
   return null;
 }

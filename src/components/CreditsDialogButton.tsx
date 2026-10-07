@@ -10,26 +10,27 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { useSettingsContext } from "@/contexts/SettingsContext";
 
 function CreditsDialogButton() {
   const { t } = useLingui();
-  const { hasStartedExperience } = useSettingsContext();
 
   return (
     <Dialog>
       <DialogTrigger asChild>
         <Button
-          tabIndex={!hasStartedExperience ? -1 : undefined}
           variant="outline"
           size="icon"
           className="size-8"
+          aria-label={t`Credits`}
+          title={t`Credits`}
         >
-          🏅
+          <span aria-hidden className="font-emoji">
+            🏅
+          </span>
         </Button>
       </DialogTrigger>
 
-      <DialogContent className="z-[500000001]">
+      <DialogContent>
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold">
             {t`Credits 💖`}
@@ -42,6 +43,7 @@ function CreditsDialogButton() {
                 <a
                   href="https://www.solarsystemscope.com/textures/"
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="hover:underline focus-visible:underline font-bold"
                 >
                   Solar System Scope
@@ -51,6 +53,7 @@ function CreditsDialogButton() {
                   className="hover:underline focus-visible:underline font-bold"
                   href="http://creativecommons.org/licenses/by/4.0/"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   Creative Commons Attribution
                 </a>
@@ -61,6 +64,7 @@ function CreditsDialogButton() {
                 <a
                   href="https://www.youtube.com/channel/UC2lHxFyHL96NPhdU9XyXnPQ"
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="hover:underline focus-visible:underline font-bold"
                 >
                   Reed Mathis
@@ -70,6 +74,7 @@ function CreditsDialogButton() {
                   className="hover:underline focus-visible:underline font-bold"
                   href="https://www.youtube.com/audiolibrary"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   YouTube Audio Library
                 </a>
@@ -80,6 +85,7 @@ function CreditsDialogButton() {
                 <a
                   href="https://pixabay.com/users/freesound_community-46691455/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=6451"
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="hover:underline focus-visible:underline font-bold"
                 >
                   freesound_community
@@ -87,8 +93,9 @@ function CreditsDialogButton() {
                 {t`from`}{" "}
                 <a
                   className="hover:underline focus-visible:underline font-bold"
-                  href="https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=6451"
+                  href="https://pixabay.com/sound-effects/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=6451"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   Pixabay
                 </a>
@@ -99,6 +106,7 @@ function CreditsDialogButton() {
                 <a
                   href="https://pixabay.com/users/freesound_community-46691455/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=29600"
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="hover:underline focus-visible:underline font-bold"
                 >
                   freesound_community
@@ -106,8 +114,9 @@ function CreditsDialogButton() {
                 {t`from`}{" "}
                 <a
                   className="hover:underline focus-visible:underline font-bold"
-                  href="https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=29600"
+                  href="https://pixabay.com/sound-effects/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=29600"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   Pixabay
                 </a>
@@ -118,6 +127,7 @@ function CreditsDialogButton() {
                 <a
                   href="https://pixabay.com/users/floraphonic-38928062/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=200424"
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="hover:underline focus-visible:underline font-bold"
                 >
                   floraphonic
@@ -125,8 +135,9 @@ function CreditsDialogButton() {
                 {t`from`}{" "}
                 <a
                   className="hover:underline focus-visible:underline font-bold"
-                  href="https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=29600"
+                  href="https://pixabay.com/sound-effects/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=29600"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   Pixabay
                 </a>
@@ -137,6 +148,7 @@ function CreditsDialogButton() {
                 <a
                   href="https://skfb.ly/psECZ"
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="hover:underline focus-visible:underline font-bold"
                 >
                   ARCTIC WOLVES™
@@ -146,6 +158,7 @@ function CreditsDialogButton() {
                   className="hover:underline focus-visible:underline font-bold"
                   href="http://creativecommons.org/licenses/by/4.0/"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   Creative Commons Attribution
                 </a>
@@ -156,6 +169,7 @@ function CreditsDialogButton() {
                 <a
                   href="https://skfb.ly/6GuSY"
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="hover:underline focus-visible:underline font-bold"
                 >
                   decstar77
@@ -165,6 +179,7 @@ function CreditsDialogButton() {
                   className="hover:underline focus-visible:underline font-bold"
                   href="http://creativecommons.org/licenses/by/4.0/"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   Creative Commons Attribution
                 </a>
@@ -173,8 +188,9 @@ function CreditsDialogButton() {
               <li>
                 "Type 30 Console" {t`by`}{" "}
                 <a
-                  href=" https://skfb.ly/oPEoM"
+                  href="https://skfb.ly/oPEoM"
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="hover:underline focus-visible:underline font-bold"
                 >
                   themighty808
@@ -184,6 +200,7 @@ function CreditsDialogButton() {
                   className="hover:underline focus-visible:underline font-bold"
                   href="http://creativecommons.org/licenses/by/4.0/"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   Creative Commons Attribution
                 </a>
