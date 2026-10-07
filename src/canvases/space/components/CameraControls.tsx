@@ -607,6 +607,7 @@ function CameraControls() {
   const {
     scrollProgress,
     previousScrollProgress,
+    navigationId,
     setIsScrollingPaused,
     setCameraAnimationDuration,
   } = useScrollContext();
@@ -661,9 +662,16 @@ function CameraControls() {
         setIsScrollingPaused(false);
       }
     );
-    // previousScrollProgress and prefersReducedMotion are read at the moment of navigation only
+    // previousScrollProgress and prefersReducedMotion are read at the moment of navigation only.
+    // navigationId reruns it after every navigation, also one that ended on the stop it started from.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [camera, scrollProgress, setIsScrollingPaused, setCameraAnimationDuration]);
+  }, [
+    camera,
+    scrollProgress,
+    navigationId,
+    setIsScrollingPaused,
+    setCameraAnimationDuration,
+  ]);
 
   // Cleanup on unmount
   useEffect(() => {

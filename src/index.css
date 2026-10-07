@@ -1,5 +1,7 @@
 @import "tw-animate-css";
 @import "tailwindcss";
+/* End-to-end tests hold no styles, scanning them would reload the app whenever a test is edited */
+@source not "../e2e";
 
 :root {
   font-family: var(--font-sans), system-ui, Avenir, Helvetica, Arial, sans-serif;

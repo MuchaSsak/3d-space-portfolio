@@ -80,7 +80,8 @@ for (const viewport of viewports)
         await page.waitForTimeout(6000);
 
         const panel = page.locator(".startup-panel");
-        const settingsButtons = panel.getByRole("button").filter({
+        // Also matches the graphics select, its trigger is a button with the combobox role
+        const settingsButtons = panel.locator("button").filter({
           hasNot: page.getByText("START", { exact: true }),
         });
         await expect(settingsButtons).toHaveCount(3);
@@ -177,7 +178,11 @@ test.describe("phone", () => {
     await page.waitForTimeout(6000);
 
     for (const name of ["Language", "Graphics", "Sounds"]) {
-      await page.locator(".startup-panel").getByRole("button", { name }).tap();
+      // The graphics select is a combobox, so match by the visible label
+      await page
+        .locator(".startup-panel button")
+        .filter({ hasText: name })
+        .tap();
       const popover = page.locator(
         "[data-radix-popper-content-wrapper] > *:visible"
       );

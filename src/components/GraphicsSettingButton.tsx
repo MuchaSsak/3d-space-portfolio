@@ -54,7 +54,8 @@ function GraphicsSettingButton({
       <SelectTrigger
         iconClassName="hidden"
         tabIndex={tabIndex}
-        aria-label={buttonText ? undefined : t`Graphics: ${String(GraphicsPresetLabel())}`}
+        // Always set: unlike buttons, a combobox doesn't take its name from the text inside
+        aria-label={t`Graphics: ${String(GraphicsPresetLabel())}`}
         title={buttonText ? undefined : t`Graphics settings`}
         className={cn(
           buttonVariants({

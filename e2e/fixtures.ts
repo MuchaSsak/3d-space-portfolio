@@ -80,10 +80,14 @@ export async function getStop(page: Page) {
   return Number(await navigation(page).getAttribute("data-scroll-progress"));
 }
 
+// Flights last up to 8 seconds, but are timed by GSAP: when a frame takes over 500ms (shader compilation on the
+// first visit of a planet, a busy GPU) it advances only 33ms, so under load a flight can take several times longer
+const FLIGHT_TIMEOUT = 45_000;
+
 /**
  * Waits until the camera has arrived and the experience accepts input again
  */
-export async function waitForSettled(page: Page, timeout = 20_000) {
+export async function waitForSettled(page: Page, timeout = FLIGHT_TIMEOUT) {
   await expect(navigation(page)).toHaveAttribute(
     "data-scrolling-paused",
     "false",
@@ -91,7 +95,11 @@ export async function waitForSettled(page: Page, timeout = 20_000) {
   );
 }
 
-export async function expectStop(page: Page, stop: number, timeout = 20_000) {
+export async function expectStop(
+  page: Page,
+  stop: number,
+  timeout = FLIGHT_TIMEOUT
+) {
   await expect(navigation(page)).toHaveAttribute(
     "data-scroll-progress",
     String(stop),

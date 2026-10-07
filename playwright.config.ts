@@ -12,9 +12,12 @@ export default defineConfig({
   timeout: 4 * 60_000,
   expect: { timeout: 15_000 },
   fullyParallel: true,
-  // Every test renders the whole 3D scene, more of them at once starve the GPU and make the timings flaky
-  workers: 2,
-  retries: process.env.CI ? 1 : 0,
+  // Every test renders the whole 3D scene: even two at once can starve an integrated GPU and the memory,
+  // freezing the pages. Machines with more headroom can pass --workers=2.
+  workers: 1,
+  // Two heavy WebGL pages at once can still run the machine out of memory or stall a frame for seconds.
+  // A retried test is reported as flaky, so it stays visible.
+  retries: 1,
   reporter: [["list"], ["html", { open: "never" }]],
 
   use: {
@@ -23,7 +26,8 @@ export default defineConfig({
     viewport: { width: 1920, height: 1080 },
     trace: "retain-on-failure",
     screenshot: "only-on-failure",
-    video: "retain-on-failure",
+    // Recording every test costs CPU the scene needs, the trace already has a screencast
+    video: "on-first-retry",
     launchOptions: {
       // Headless Chromium falls back to software rendering unless told to use the GPU
       args: [

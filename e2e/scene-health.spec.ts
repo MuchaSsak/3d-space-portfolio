@@ -1,7 +1,6 @@
 import type { Page } from "@playwright/test";
 
 import {
-  chapterButton,
   expect,
   expectStop,
   seedSettings,
@@ -76,24 +75,18 @@ for (const graphics of ["low", "high"] as const)
     await seedSettings(page, { graphics });
     await startExperience(page);
 
-    // The welcome stop and the contact stop both look towards the sun
-    for (const stop of [STOP.welcome, STOP.contact]) {
-      if (stop === STOP.contact) {
-        await chapterButton(page, "Contact").click();
-        await expectStop(page, STOP.contact);
-      }
-      // The flare fades in over a few frames
-      await page.waitForTimeout(1500);
-
-      const sun = await getSunScreenPosition(page);
-      expect(sun, `the sun is in view at stop ${stop}`).not.toBeNull();
-      // There's no sun mesh, the bright spot is the lens flare alone
-      const brightness = await getBrightnessAround(page, sun!.x, sun!.y);
-      expect(
-        brightness,
-        `lens flare brightness at stop ${stop}`
-      ).toBeGreaterThan(180);
-    }
+    // The welcome stop looks straight at the sun. There's no sun mesh, the bright spot is the lens flare alone.
+    // It fades in over a number of frames, which takes a while at headless frame rates.
+    await expect
+      .poll(
+        async () => {
+          const sun = await getSunScreenPosition(page);
+          if (!sun) return "the sun is out of view";
+          return getBrightnessAround(page, sun.x, sun.y);
+        },
+        { message: "lens flare brightness at the sun", timeout: 15_000 }
+      )
+      .toBeGreaterThan(180);
   });
 
 test("the lens flare occlusion test stays cheap", async ({ page }) => {

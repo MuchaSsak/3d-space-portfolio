@@ -38,6 +38,9 @@ export type ScrollInterceptor = (
 type ScrollContext = {
   scrollProgress: number;
   previousScrollProgress: number;
+  // Changes on every navigation, also when quick inputs end up back on the same stop before a render
+  // (e.g. a step and Home in one frame), so the camera always answers and unpauses scrolling
+  navigationId: number;
   isScrollingPaused: boolean;
   setIsScrollingPaused: (isPaused: boolean) => void;
   // Duration (in seconds) of the camera animation to the current camera stop, so content can appear in sync with it
@@ -63,6 +66,7 @@ type ScrollContext = {
 const initialScrollContext: ScrollContext = {
   scrollProgress: 0,
   previousScrollProgress: 0,
+  navigationId: 0,
   isScrollingPaused: false,
   setIsScrollingPaused: () => {},
   cameraAnimationDuration: 0,
@@ -146,6 +150,7 @@ export function ScrollContextProvider({
   const [progress, setProgress] = useState({
     scrollProgress: 0,
     previousScrollProgress: 0,
+    navigationId: 0,
   });
   const [isScrollingPaused, setIsScrollingPausedState] = useState(false);
   const [cameraAnimationDuration, setCameraAnimationDuration] = useState(0);
@@ -176,12 +181,13 @@ export function ScrollContextProvider({
         MAX_SCROLL_PROGRESS,
         Math.max(MIN_SCROLL_PROGRESS, Math.round(target))
       );
-      const { scrollProgress } = progressRef.current;
+      const { scrollProgress, navigationId } = progressRef.current;
       if (clampedTarget === scrollProgress) return;
 
       progressRef.current = {
         scrollProgress: clampedTarget,
         previousScrollProgress: scrollProgress,
+        navigationId: navigationId + 1,
       };
       setProgress(progressRef.current);
       // Camera controls unpause scrolling once the camera animation is finished

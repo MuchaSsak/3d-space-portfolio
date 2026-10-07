@@ -19,6 +19,8 @@ test.describe("full motion", () => {
   test("keyboard: step by step to the contact form and all the way back", async ({
     page,
   }) => {
+    // 22 camera flights
+    test.setTimeout(8 * 60_000);
     await seedSettings(page, { graphics: "high" });
     await startExperience(page);
 
@@ -42,6 +44,7 @@ test.describe("full motion", () => {
   });
 
   test("mouse wheel: through every stop and back", async ({ page }) => {
+    test.setTimeout(8 * 60_000);
     await seedSettings(page);
     await startExperience(page);
 
@@ -59,10 +62,20 @@ test.describe("full motion", () => {
     await seedSettings(page);
     await startExperience(page);
 
-    await page.mouse.move(960, 900);
-    // A burst of small wheel deltas without pauses, like trackpad inertia
-    for (let i = 0; i < 40; i++) await page.mouse.wheel(0, 40);
+    // Small wheel deltas every frame for ~0.6s, like trackpad inertia. Dispatched in the page, as sequential
+    // Playwright wheel calls get spread over seconds on a busy machine, which no trackpad does.
+    await page.evaluate(async () => {
+      const target = document.elementFromPoint(960, 900)!;
+      for (let i = 0; i < 40; i++) {
+        target.dispatchEvent(
+          new WheelEvent("wheel", { deltaY: 40, bubbles: true })
+        );
+        await new Promise((resolve) => setTimeout(resolve, 16));
+      }
+    });
     await expectStop(page, STOP.welcomeCloseup);
+    await page.waitForTimeout(1500);
+    expect(await getStop(page)).toBe(STOP.welcomeCloseup);
   });
 
   test("chapter buttons jump to their planet from anywhere", async ({
@@ -162,6 +175,8 @@ test.describe("full motion", () => {
 
     // Left/right arrows browse the projects instead of leaving the section
     for (let i = 2; i <= count; i++) {
+      // Input is ignored while the carousel rotates (550ms), so wheel momentum can't skip cards
+      await page.waitForTimeout(600);
       await page.keyboard.press("ArrowRight");
       await expect(counter).toHaveText(new RegExp(`^${i}/`));
     }
