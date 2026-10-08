@@ -275,7 +275,7 @@ function StartupScreen() {
             href={getWebsiteLink(language)}
             className="font-medium text-foreground/85 underline underline-offset-2 hover:text-foreground focus-visible:text-foreground rounded-sm outline-none focus-visible:ring-[3px] focus-visible:ring-ring/60"
           >
-            matmuszarski.space
+            muszarski.com
           </a>
         </p>
 

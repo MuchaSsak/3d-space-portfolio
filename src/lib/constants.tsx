@@ -20,7 +20,7 @@ export const EMAILJS_SERVICE_ID = "service_ygvcefb";
 export const EMAILJS_TEMPLATE_ID = "template_4e3jgyp";
 
 // Links
-export const CONTACT_EMAIL = "hi@matmuszarski.space";
+export const CONTACT_EMAIL = "hi@muszarski.com";
 export const GITHUB_LINK = "https://github.com/MuchaSsak";
 // Self-hosted, so no visitor data reaches GitHub just by loading the page
 export const AVATAR_IMG_SRC = "/assets/pictures/mateusz_muszarski_avatar.jpg";
@@ -28,7 +28,7 @@ export const INSTAGRAM_LINK = "https://www.instagram.com/mat.muszarski/";
 export const LINKEDIN_LINK =
   "https://www.linkedin.com/in/mateusz-muszarski-b1168a28a/";
 // The main, fully responsive portfolio
-export const WEBSITE_LINK = "https://www.matmuszarski.space";
+export const WEBSITE_LINK = "https://muszarski.com";
 export const SOURCE_CODE_LINK = "https://github.com/MuchaSsak/3d-space-portfolio";
 // Separate lightweight page (privacy-policy/index.html), outside of the 3D experience
 export const PRIVACY_POLICY_LINK = "/privacy-policy/";

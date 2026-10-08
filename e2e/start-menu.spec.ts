@@ -88,7 +88,7 @@ for (const viewport of viewports)
 
         const header = await getBox(page.locator("header").first());
         const footer = await getBox(
-          page.getByRole("link", { name: "matmuszarski.space" }).locator("..")
+          page.getByRole("link", { name: "muszarski.com" }).locator("..")
         );
         const privacy = await getBox(
           page.getByRole("link", { name: /privacy|prywatności/i })

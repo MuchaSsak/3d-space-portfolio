@@ -3,7 +3,7 @@
 A fully immersive 3D portfolio themed around space: a scroll-driven flight from Earth to Neptune, one planet per section. Built with React + WebGL/Three.js.
 
 - Live: [3d-space-folio.vercel.app](https://3d-space-folio.vercel.app) 🚀
-- My main (fast, mobile-friendly) portfolio: [matmuszarski.space](https://www.matmuszarski.space)
+- My main (fast, mobile-friendly) portfolio: [muszarski.com](https://muszarski.com)
 
 ## Navigating the experience
 
