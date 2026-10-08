@@ -1,3 +1,12 @@
+## [1.5.1](https://github.com/MuchaSsak/3d-space-portfolio/compare/v1.5.0...v1.5.1) (2026-10-07)
+
+
+### Bug Fixes
+
+* scrolling lock after same-frame navigation, unnamed graphics select; stable e2e suite ([6c24a4e](https://github.com/MuchaSsak/3d-space-portfolio/commit/6c24a4e90688c250709dc310fac25868cb42c8eb))
+
+
+
 # [1.5.0](https://github.com/MuchaSsak/3d-space-portfolio/compare/v1.4.0...v1.5.0) (2026-10-07)
 
 
@@ -32,15 +41,6 @@
 ### Features
 
 * overhaul performance, accessibility, navigation and content ([811c02b](https://github.com/MuchaSsak/3d-space-portfolio/commit/811c02b91c51c674d16e7c612803ab8ca4558644))
-
-
-
-## [1.1.7](https://github.com/MuchaSsak/3d-space-portfolio/compare/v1.1.6...v1.1.7) (2026-03-26)
-
-
-### Bug Fixes
-
-* work experience ruigrok title ([2b51258](https://github.com/MuchaSsak/3d-space-portfolio/commit/2b51258e4046045f0eff0310022cef49000c6330))
 
 
 
